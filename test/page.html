@@ -1,0 +1,143 @@
+<!doctype html>
+<!--
+test full html file before implementing as module
+ -->
+<html lang="en">
+	<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Resize My Photos Test Page</title>
+    <style type="text/css">
+    	.container-fluid{
+    		background-color: #343235;
+    	}
+    	.container-fluid h1,h3{
+    		color: #5aa6be!important;
+    	}
+    	.container-fluid{
+    		color: #fefefd;
+    	}
+    	#img-container img {
+    		max-width: 100%; /* This rule is very important, please do not ignore this! */
+    	}
+    	.box{
+    		background-color: #504e51;
+    		padding-left: 0px!important;
+    		padding-right: 0px!important;
+    	}
+    	.box .btn.active{
+    		color: #337ab7!important;
+    		border-color: #2e6da4;
+    		outline: 5px auto -webkit-focus-ring-color!important;
+    		outline-offset: -2px!important;
+    	}
+    	.box .btn:hover{
+    		color: #337ab7!important;
+    	}
+    	#custom-sizes input{
+    		background-color: #504e51;
+    		border: 0px none;
+    	}
+    	.box .Desktop{
+    		width: 192px;
+    		height: 108px;
+    	}
+    	.box .Laptop{
+    		width: 144px;
+    		height: 90px;
+    	}
+    	.box .Thumbnail{
+    		width: 110px;
+    		height: 110px;
+    	}
+    </style>
+	<!-- Latest compiled and minified bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<!-- Latest compiled and minified cropper CSS -->
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/0.8.1/cropper.min.css">
+	</head>
+	<body>
+		<div class="container-fluid">
+			<div id="right-side" class="col-md-6 pull-right">
+				<div id="img-container">
+					<img id="image" src="test-image.jpeg" class="img-responsive" alt="Image to crop">
+				</div>
+				<div id="info">
+				</div>
+				<div id="download">
+				</div>
+				</div>
+			<div id="left-side" class="col-md-6 pull-left">
+				<div id="header" class="row">
+					<h1>Choose your image size</h1>
+				</div>
+				<div id="crop-custom">
+					<h3>Custom</h3>
+					<div id="custom-sizes" class="row">
+						Width <input type="text" name="custom-width"> PX | Height <input type="text" name="custom-height"> PX
+					</div>
+				</div>
+				<div id="crop-standard">
+					<h3>Standard</h3>
+					<div class="row btn-group docs-aspect-ratios" data-toggle="buttons">
+						<div class="col-md-4 box">
+							<label class="btn active Desktop" aria-pressed="true">
+								<input type="radio" class="sr-only" id="Desktop-ratio" name="aspectRatio" value="1.7777777777777777">
+								Desktop<br>
+								1920 x 1080
+							</label>
+						</div>
+						<div class="col-md-3 col-md-offset-1 box">
+							<label class="btn Laptop" aria-pressed="true">
+              					<input type="radio" class="sr-only" id="Laptop-ratio" name="aspectRatio" value="1.6">
+								Laptop<br>
+								1440 x 900
+							</label>
+						</div>
+						<div class="col-md-3 col-md-offset-1 box">
+							<label class="btn Thumbnail" aria-pressed="true">
+              					<input type="radio" class="sr-only" id="Thumbnail-ratio" name="aspectRatio" value="1">
+								Thumbnail<br>
+								200 x 200
+							</label>
+						</div>
+					</div>
+				</div>
+				<div id="crop-social">
+					<div class="row">
+						<h3>Social networks</h3>
+						<div id="socail-icons">
+							<div id="facebook-icon"></div>
+							<div id="linkedin-icon"></div>
+							<div id="googleplus-icon"></div>
+							<div id="pintrest-icon"></div>
+						</div>
+					</div>
+					<div class="row">
+						<div id="facebook">
+							<div class="col-md-4 box">
+								Facebook cover
+							</div>
+							<div class="col-md-3 col-md-offset-1 box">
+								Facebook profile
+							</div>
+							<div class="col-md-3 col-md-offset-1 box">
+								Facebook post
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<!-- Latest compiled and minified Bootstrap's JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<!-- Latest compiled and minified Cropper JavaScript -->
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/0.8.1/cropper.min.js"></script>
+		<!-- Main javascript file -->
+		<script type="text/javascript" src="js/main.js"></script>
+	</body>
+</html>
