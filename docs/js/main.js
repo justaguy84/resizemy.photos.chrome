@@ -11,7 +11,8 @@ window.onload = function () {
   var imageHeight = image.naturalHeight;
   var info = document.getElementById('info');
   var download = document.getElementById('download');
-  var actions = document.getElementById('left-side');
+  var prepareImage = document.getElementById('prepareImage');
+  var actions = document.getElementById('wrapper');
   var dataHeight = document.getElementById('dataHeight');
   var dataWidth = document.getElementById('dataWidth');
   var options = {
@@ -36,6 +37,7 @@ window.onload = function () {
           console.log(e.type);
           dataHeight.value = Math.round(data.height);
           dataWidth.value = Math.round(data.width);
+          prepareImage.setAttribute('data-option', '{ "width": 160, "height": 90 }');
         },
         zoom: function (e) {
           console.log(e.type, e.detail.ratio);
@@ -44,6 +46,22 @@ window.onload = function () {
   var cropper = new Cropper(image, options);
   var originalImageURL = image.src;
   var uploadedImageURL;
+
+  // Buttons
+  if (!document.createElement('canvas').getContext) {
+    $('button[data-method="getCroppedCanvas"]').prop('disabled', true);
+  }
+
+  if (typeof document.createElement('cropper').style.transition === 'undefined') {
+    $('button[data-method="rotate"]').prop('disabled', true);
+    $('button[data-method="scale"]').prop('disabled', true);
+  }
+
+
+  // Download
+  if (typeof download.download === 'undefined') {
+    download.className += ' disabled';
+  }
 
   // Options
   actions.querySelector('#crop-standard').onchange = function (event) {
@@ -75,7 +93,7 @@ window.onload = function () {
     cropper = new Cropper(image, options);
   };
   // Methods
-  download.querySelector('.download-button').onclick = function (event) {
+  actions.querySelector('#download').onclick = function (event) {
     var e = event || window.event;
     var target = e.target || e.srcElement;
     var result;
