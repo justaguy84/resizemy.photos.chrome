@@ -1,0 +1,42 @@
+.container-fluid{
+    background-color: #343235;
+}
+.container-fluid h1,h3{
+  color: #5aa6be!important;
+}
+.container-fluid{
+  color: #fefefd;
+}
+#img-container img {
+  max-width: 100%; /* This rule is very important, please do not ignore this! */
+}
+.box{
+  background-color: #504e51;
+  padding-left: 0px!important;
+  padding-right: 0px!important;
+}
+.box .btn.active{
+  color: #337ab7!important;
+  border-color: #2e6da4;
+  outline: 5px auto -webkit-focus-ring-color!important;
+  outline-offset: -2px!important;
+}
+.box .btn:hover{
+  color: #337ab7!important;
+}
+#custom-sizes input{
+  background-color: #504e51;
+  border: 0px none;
+}
+.box .Desktop{
+  width: 192px;
+  height: 108px;
+}
+.box .Laptop{
+  width: 144px;
+  height: 90px;
+}
+.box .Thumbnail{
+  width: 110px;
+  height: 110px;
+}
