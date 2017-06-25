@@ -47,7 +47,6 @@ window.onload = function () {
     var target = e.target || e.srcElement;
     var cropBoxData;
     var canvasData;
-    var isCheckbox;
     var isRadio;
 
     if (!cropper) {
@@ -58,29 +57,17 @@ window.onload = function () {
       target = target.querySelector('input');
     }
 
-    isCheckbox = target.type === 'checkbox';
     isRadio = target.type === 'radio';
 
-    if (isCheckbox || isRadio) {
-      if (isCheckbox) {
-        options[target.name] = target.checked;
-        cropBoxData = cropper.getCropBoxData();
-        canvasData = cropper.getCanvasData();
-
-        options.ready = function () {
-          console.log('ready');
-          cropper.setCropBoxData(cropBoxData).setCanvasData(canvasData);
-        };
-      } else {
-        options[target.name] = target.value;
-        options.ready = function () {
-          console.log('ready');
-        };
-      }
-
-      // Restart
-      cropper.destroy();
-      cropper = new Cropper(image, options);
+    if (isRadio) {
+      options[target.name] = target.value;
+      options.ready = function () {
+        console.log('ready');
+      };
     }
-  };
+
+    // Restart
+    cropper.destroy();
+    cropper = new Cropper(image, options);
+  }
 };
