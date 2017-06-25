@@ -6,6 +6,10 @@ window.onload = function () {
   var URL = window.URL || window.webkitURL;
   var container = document.querySelector('#img-container');
   var image = container.getElementsByTagName('img').item(0);
+  var imageName = image.getAttribute('src');
+  var imageWidth = image.naturalWidth;
+  var imageHeight = image.naturalHeight;
+  var info = document.getElementById('info');
   var download = document.getElementById('download');
   var actions = document.getElementById('left-side');
   var dataHeight = document.getElementById('dataHeight');
@@ -70,4 +74,7 @@ window.onload = function () {
     cropper.destroy();
     cropper = new Cropper(image, options);
   }
+
+  document.getElementById('file-name').innerHTML = imageName;
+  document.getElementById('file-size').innerHTML = 'Original size: ' + imageWidth + 'x' + imageHeight;
 };
