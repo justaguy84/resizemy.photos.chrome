@@ -25,7 +25,16 @@ test full html file before implementing as module
 					<p id="file-name"></p>
 					<p id="file-size"></p>
 				</div>
-				<div id="download">
+				<div id="download" class="row">
+					<label class="btn active" aria-pressed="true">
+						<input type="radio" class="sr-only" id="download-jpg" name="aspectRatio" value="image/jpeg">
+						JPG
+					</label>
+					<label class="btn active" aria-pressed="true">
+						<input type="radio" class="sr-only" id="download-png" name="aspectRatio" value="image/png">
+						PNG
+					</label>
+					<button class="btn btn-primary download-button" data-method="getCroppedCanvas">Download Image</button>
 				</div>
 				</div>
 			<div id="left-side" class="col-md-6 pull-left">
