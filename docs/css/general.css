@@ -57,7 +57,7 @@ float:left;
 }
 
 .box{
-  display: block;
+  display: table;
   float:left;
   text-align: center;
   margin-right: 10px;
@@ -65,7 +65,8 @@ float:left;
 }
 
 .box p{
- padding-top: 10%;
+ display: table-cell;
+ vertical-align: middle;
 }
 
 .box.desktop{
@@ -86,18 +87,18 @@ a.link{
 }
 
 .facebook .box.cover{
-  width:204px;
-  height:76px;
+  width:200px;
+  height:74px;
 }
 
 .facebook .box.profile{
-  width:100px;
-  height:100px;
+  width:90px;
+  height:90px;
 }
 
 .facebook .box.post{
-  width:150px;
-  height:150px;
+  width:130px;
+  height:130px;
 }
 
 .editor-section{
