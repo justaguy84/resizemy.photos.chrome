@@ -181,7 +181,7 @@ window.onload = function () {
           if (result) {
 
             // Bootstrap's Modal
-            $('#getCroppedCanvasModal').modal().find('.modal-body').html(result);
+            $('#getCroppedCanvasModal').find('.modal-body').html(result);
 
             if (!download.disabled) {
               download.href = result.toDataURL('image/jpeg');

@@ -131,29 +131,16 @@ test full html file before implementing as module
 						PNG
 					</label>
 					<button id="prepareImage" class="btn btn-primary prepare-button" data-method="getCroppedCanvas">Prepare image</button>
+					<a class="btn btn-primary" id="download-btn" href="javascript:void(0);" download="cropped.jpg">Download</a>
 				</div>
 			</div>
 		</div>
 		<!-- Show the cropped image in modal -->
-        <div class="modal fade docs-cropped" id="getCroppedCanvasModal" role="dialog" aria-hidden="true" aria-labelledby="getCroppedCanvasTitle" tabindex="-1">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="getCroppedCanvasTitle">Cropped</h4>
-              </div>
-              <div class="modal-body"></div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <a class="btn btn-primary" id="download-btn" href="javascript:void(0);" download="cropped.jpg">Download</a>
-              </div>
-            </div>
-          </div>
+        <div class="hidden" id="getCroppedCanvasModal" role="dialog" aria-hidden="true" aria-labelledby="getCroppedCanvasTitle" tabindex="-1">
+        	<div class="modal-body"></div>
         </div><!-- /.modal -->
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-		<!-- Latest compiled and minified Bootstrap's JavaScript -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 		<!-- Latest compiled and minified Cropper JavaScript -->
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/0.8.1/cropper.min.js"></script>
 		<!-- Main javascript file -->
