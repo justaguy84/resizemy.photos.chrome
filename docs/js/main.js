@@ -9,7 +9,7 @@ window.onload = function () {
   var imageName = image.getAttribute('src');
   var imageWidth = image.naturalWidth;
   var imageHeight = image.naturalHeight;
-  var imageRatio = imageWidth / imageHeight;
+  var imageRatio = image.aspectRatio;
   var info = document.getElementById('info');
   var download = document.getElementById('download-btn');
   var prepareImage = document.getElementById('prepareImage');
@@ -69,6 +69,8 @@ window.onload = function () {
     var isRadio;
     var isText;
     var data;
+    var imageData;
+    var result;
 
     data = {
       method: target.getAttribute('data-method'),
@@ -103,6 +105,16 @@ window.onload = function () {
       else if (target.id === 'dataHeight') {
         dataWidth.value = Math.round(target.value * (image.naturalWidth/image.naturalHeight));
       }
+      $('.box.btn.active').removeClass('active');
+      prepareImage.setAttribute('data-option', '{ "width": '+dataWidth.value+', "height": '+dataHeight.value+' }');
+      imageData = cropper['getImageData']();
+      //result = cropper['setCropBoxData'](imageData,null);
+      options['aspectRatio'] = imageData.aspectRatio;
+      options['top'] = 0;
+      options['left'] = 0;
+      options['autoCropArea'] = 1;
+      //result = cropper['setCropBoxData'](JSON.parse('{"left":0,"top":0,"width": '+image.naturalWidth+', "height": '+image.naturalHeight+', "aspectRatio": '+image.aspectRatio+' }'), null);
+      //return;
     }
 
     // Restart
