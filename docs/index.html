@@ -14,6 +14,9 @@ test full html file before implementing as module
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<!-- Latest compiled and minified cropper CSS -->
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/0.8.1/cropper.min.css">
+	
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
 	<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/general.css">
 
@@ -22,14 +25,18 @@ test full html file before implementing as module
 		<div id="wrapper" class="container-fluid">
 			
 			<div id="editor" class="col-md-6">
-				<div id="header" class="row">
-					<h1>Choose your image size</h1>
-				</div>
+				
+				<h1>Choose your image size</h1>
 
 				<div id="custom" class="editor-section">
 					<h2>Custom size</h2>
-					<div id="custom-sizes" class="row">
-						Width <input type="text" name="custom-width" id="dataWidth"> PX | Height <input type="text" name="custom-height" id="dataHeight"> PX
+					<div id="custom-sizes">
+						Width <input type="text" name="custom-width" id="dataWidth"> PX 
+						<a class="link">
+							<i class="fa fa-link" aria-hidden="true"></i>
+							<!-- <i class="fa fa-chain-broken" aria-hidden="true"></i> -->
+						</a>
+						Height <input type="text" name="custom-height" id="dataHeight"> PX
 					</div>
 				</div>
 				<div id="pre-set" class="btn-group" data-toggle="buttons">
@@ -71,17 +78,25 @@ test full html file before implementing as module
 						</div>
 						<div class="row">
 							<div id="facebook">
-								<div class="col-md-4 box">
-									<label class="box btn facbook-cover " aria-pressed="true">
+								<div class="box cover">
+									<label class="box btn cover " aria-pressed="true">
 										<input type="radio" class="sr-only" id="facbook-cover" name="aspectRatio" value="2.6285714286" data-option="{ &quot;width&quot;: 828, &quot;height&quot;: 315 }">
 										Facebook cover
 									</label>
 								</div>
-								<div class="col-md-3 col-md-offset-1 box">
-									Facebook profile
+								<div class="box profile">
+									<label class="box btn profile" aria-pressed="true">
+										<input type="radio" class="sr-only" id="facbook-cover" name="aspectRatio" value="2.6285714286" data-option="{ &quot;width&quot;: 828, &quot;height&quot;: 315 }">
+										Facebook profile
+									</label>
+									
 								</div>
-								<div class="col-md-3 col-md-offset-1 box">
-									Facebook post
+								<div class="box post">
+								<label class="box btn post" aria-pressed="true">
+										<input type="radio" class="sr-only" id="facbook-cover" name="aspectRatio" value="2.6285714286" data-option="{ &quot;width&quot;: 828, &quot;height&quot;: 315 }">
+										Facebook post
+									</label>
+									
 								</div>
 							</div>
 						</div>
