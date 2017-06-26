@@ -9,46 +9,32 @@ test full html file before implementing as module
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Resize My Photos Test Page</title>
-    <link rel="stylesheet" type="text/css" href="css/general.css">
+    
 	<!-- Latest compiled and minified bootstrap CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<!-- Latest compiled and minified cropper CSS -->
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/0.8.1/cropper.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/general.css">
+
 	</head>
 	<body>
 		<div id="wrapper" class="container-fluid">
-			<div id="right-side" class="col-md-6 pull-right">
-				<div id="img-container" class="row">
-					<img id="image" src="test-image.jpeg" class="img-responsive" alt="Image to crop">
-				</div>
-				<div id="info" class="row">
-					<p id="file-name"></p>
-					<p id="file-size"></p>
-				</div>
-				<div id="download" class="row">
-					<label class="btn active" aria-pressed="true">
-						<input type="radio" class="sr-only" id="download-jpg" name="aspectRatio" value="image/jpeg">
-						JPG
-					</label>
-					<label class="btn active" aria-pressed="true">
-						<input type="radio" class="sr-only" id="download-png" name="aspectRatio" value="image/png">
-						PNG
-					</label>
-					<button id="prepareImage" class="btn btn-primary prepare-button" data-method="getCroppedCanvas">Prepare image</button>
-				</div>
-			</div>
-			<div id="left-side" class="col-md-6 pull-left">
+			
+			<div id="editor" class="col-md-6">
 				<div id="header" class="row">
 					<h1>Choose your image size</h1>
 				</div>
-				<div id="crop-custom">
-					<h3>Custom</h3>
+
+				<div id="custom" class="editor-section">
+					<h2>Custom</h2>
 					<div id="custom-sizes" class="row">
 						Width <input type="text" name="custom-width" id="dataWidth"> PX | Height <input type="text" name="custom-height" id="dataHeight"> PX
 					</div>
 				</div>
-				<div id="crop-standard">
-					<h3>Standard</h3>
+
+				<div id="standard" class="editor-section">
+					<h2>Standard</h2>
 					<div class="row btn-group docs-aspect-ratios" data-toggle="buttons">
 						<div class="col-md-4">
 							<label class="box btn active Desktop " aria-pressed="true">
@@ -73,14 +59,15 @@ test full html file before implementing as module
 						</div>
 					</div>
 				</div>
-				<div id="crop-social">
+
+				<div id="social" class="editor-section">
 					<div class="row">
-						<h3>Social networks</h3>
-						<div id="socail-icons">
-							<div id="facebook-icon"></div>
-							<div id="linkedin-icon"></div>
-							<div id="googleplus-icon"></div>
-							<div id="pintrest-icon"></div>
+						<h2>Social networks</h2>
+						<div id="social-icons">
+							<div class="fb"></div>
+							<div class="in"></div>
+							<div class="gplus"></div>
+							<div id="pn"></div>
 						</div>
 					</div>
 					<div class="row">
@@ -96,6 +83,26 @@ test full html file before implementing as module
 							</div>
 						</div>
 					</div>
+				</div>
+			</div>
+			<div id="the-image" class="col-md-6">
+				<div id="img-container" class="row">
+					<img id="image" src="test-image.jpeg" class="img-responsive" alt="Image to crop">
+				</div>
+				<div id="info" class="row">
+					<p id="file-name"></p>
+					<p id="file-size"></p>
+				</div>
+				<div id="download" class="row">
+					<label class="btn active" aria-pressed="true">
+						<input type="radio" class="sr-only" id="download-jpg" name="aspectRatio" value="image/jpeg">
+						JPG
+					</label>
+					<label class="btn active" aria-pressed="true">
+						<input type="radio" class="sr-only" id="download-png" name="aspectRatio" value="image/png">
+						PNG
+					</label>
+					<button id="prepareImage" class="btn btn-primary prepare-button" data-method="getCroppedCanvas">Prepare image</button>
 				</div>
 			</div>
 		</div>

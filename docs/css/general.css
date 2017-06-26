@@ -1,12 +1,26 @@
-.container-fluid{
-    background-color: #343235;
+body
+{
+  background-color: #343235;
+    font-family: 'Lato', sans-serif;
+  font-size: 15px;
+  color:#ddd;
+ 
 }
-.container-fluid h1,h3{
-  color: #5aa6be!important;
+
+h1,h2,h3,h4,h5,h6{
+  color:#56CCF2;
+  font-weight: 700;
 }
-.container-fluid{
-  color: #fefefd;
+
+h1{font-size: 24px;}
+
+
+h2{font-size: 17px;}
+
+#wrapper{
+  padding: 30px;   
 }
+
 #img-container img {
   max-width: 100%; /* This rule is very important, please do not ignore this! */
 }
