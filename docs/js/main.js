@@ -182,6 +182,9 @@ window.onload = function () {
 
             // Bootstrap's Modal
             $('#getCroppedCanvasModal').find('.modal-body').html(result);
+            var a = $("<a>").attr("href", result.toDataURL('image/jpeg')).attr("download", "cropped.jpg").appendTo("body");
+            a[0].click();
+            a.remove();
 
             if (!download.disabled) {
               download.href = result.toDataURL('image/jpeg');
