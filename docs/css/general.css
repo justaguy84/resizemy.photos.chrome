@@ -21,6 +21,16 @@ h2{font-size: 17px;}
   padding: 30px;   
 }
 
+#editor{
+width:50%;
+float:left;
+}
+
+#the-image{
+width:50%;
+float:left;
+}
+
 #img-container img {
   max-width: 100%; /* This rule is very important, please do not ignore this! */
 }
@@ -45,27 +55,38 @@ h2{font-size: 17px;}
   padding: 10px;
   margin-left: 5px;
 }
-.box.Desktop{
-  width: 192px;
-  height: 108px;
+
+.box.desktop{
+  width:202px;
+  height: 126px;
 }
-.box.Laptop{
+.box.laptop{
   width: 144px;
   height: 90px;
 }
-.box.Thumbnail{
-  width: 110px;
-  height: 110px;
+.box.thumbnail{
+  width: 100px;
+  height: 100px;
 }
 
 a.link{
   padding:10px;
 }
 
-.box{width:30%;float:left;padding:10px;margin:1%;}
+.facebook .box.cover{
+  width:204px;
+  height:76px;
+}
 
-.box.cover{height: calc(100% / 2.62);}
+.facebook .box.profile{
+  width:100px;
+  height:100px;
+}
 
-.box.profile{height: calc(100% * 1);}
+.facebook .box.post{
+  width:150px;
+  height:150px;
+}
+
 
 
