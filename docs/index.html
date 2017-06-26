@@ -10,57 +10,68 @@ test full html file before implementing as module
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Resize My Photos Test Page</title>
     
-	<!-- Latest compiled and minified bootstrap CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<!-- Latest compiled and minified cropper CSS -->
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/0.8.1/cropper.min.css">
+	
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
 	<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/general.css">
 
 	</head>
 	<body>
-		<div id="wrapper" class="container-fluid">
+		<div id="wrapper">
 			
-			<div id="editor" class="col-md-6">
-				<div id="header" class="row">
-					<h1>Choose your image size</h1>
-				</div>
+			<div id="editor">
+				
+				<h1>Choose your image size</h1>
 
 				<div id="custom" class="editor-section">
 					<h2>Custom size</h2>
-					<div id="custom-sizes" class="row">
-						Width <input type="text" name="custom-width" id="dataWidth"> PX | Height <input type="text" name="custom-height" id="dataHeight"> PX
+					<div id="custom-sizes">
+						Width <input type="text" name="custom-width" id="dataWidth"> PX 
+						<a class="link">
+							<i class="fa fa-link" aria-hidden="true"></i>
+							<!-- <i class="fa fa-chain-broken" aria-hidden="true"></i> -->
+						</a>
+						Height <input type="text" name="custom-height" id="dataHeight"> PX
 					</div>
 				</div>
-				<div id="pre-set" class="btn-group" data-toggle="buttons">
+				<div id="preset" data-toggle="buttons">
 					<div id="standard" class="editor-section">
 						<h2>Standard</h2>
-						<div class="row">
-							<div class="col-md-4">
-								<label class="box btn active Desktop " aria-pressed="true">
+						<div>
+							<div>
+								<label class="box btn active desktop" aria-pressed="true">
 									<input type="radio" class="sr-only" id="Desktop-ratio" name="aspectRatio" value="1.7777777777777777" data-option="{ &quot;width&quot;: 1920, &quot;height&quot;: 1080 }">
+									<p>
 									Desktop<br>
 									1920 x 1080
+									</p>
 								</label>
 							</div>
-							<div class="col-md-3 col-md-offset-1">
-								<label class="box btn Laptop" aria-pressed="true">
-            	  					<input type="radio" class="sr-only" id="Laptop-ratio" name="aspectRatio" value="1.6" 	data-option="{ &quot;width&quot;: 1440, &quot;height&quot;: 900 }">
+							<div>
+								<label class="box btn laptop" aria-pressed="true">
+            	  					<input type="radio" class="sr-only" id="Laptop-ratio" name="aspectRatio" value="1.6" data-option="{ &quot;width&quot;: 1440, &quot;height&quot;: 900 }">
+									<p>
 									Laptop<br>
 									1440 x 900
+									</p>
 								</label>
 							</div>
-							<div class="col-md-3 col-md-offset-1">
-								<label class="box btn Thumbnail" aria-pressed="true">
+							<div>
+								<label class="box btn thumbnail" aria-pressed="true">
               						<input type="radio" class="sr-only" id="Thumbnail-ratio" name="aspectRatio" value="1" data-option="{ &quot;width&quot;: 200, &quot;height&quot;: 200 }">
+									<p>
 									Thumbnail<br>
 									200 x 200
+									</p>
 								</label>
 							</div>
 						</div>
 					</div>
 					<div id="social" class="editor-section">
-						<div class="row">
+						<div>
 							<h2>Social networks</h2>
 							<div id="social-icons">
 								<div class="fb"></div>
@@ -69,34 +80,42 @@ test full html file before implementing as module
 								<div id="pn"></div>
 							</div>
 						</div>
-						<div class="row">
-							<div id="facebook">
-								<div class="col-md-4 box">
-									<label class="box btn facbook-cover " aria-pressed="true">
+						<div>
+							<div class="facebook">
+								<div class="box cover">
+									<label class="box btn cover" aria-pressed="true">
 										<input type="radio" class="sr-only" id="facbook-cover" name="aspectRatio" value="2.6285714286" data-option="{ &quot;width&quot;: 828, &quot;height&quot;: 315 }">
 										Facebook cover
 									</label>
 								</div>
-								<div class="col-md-3 col-md-offset-1 box">
-									Facebook profile
+								<div class="box profile">
+									<label class="box btn profile" aria-pressed="true">
+										<input type="radio" class="sr-only" id="facbook-cover" name="aspectRatio" value="2.6285714286" data-option="{ &quot;width&quot;: 828, &quot;height&quot;: 315 }">
+										Facebook profile
+									</label>
+									
 								</div>
-								<div class="col-md-3 col-md-offset-1 box">
-									Facebook post
+								<div class="box post">
+								<label class="box btn post" aria-pressed="true">
+										<input type="radio" class="sr-only" id="facbook-cover" name="aspectRatio" value="2.6285714286" data-option="{ &quot;width&quot;: 828, &quot;height&quot;: 315 }">
+										Facebook post
+									</label>
+									
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div id="the-image" class="col-md-6">
-				<div id="img-container" class="row">
+			<div id="the-image">
+				<div id="img-container">
 					<img id="image" src="test-image.jpeg" class="img-responsive" alt="Image to crop">
 				</div>
-				<div id="info" class="row">
+				<div id="info">
 					<p id="file-name"></p>
 					<p id="file-size"></p>
 				</div>
-				<div id="download" class="row">
+				<div id="download">
 					<label class="btn active" aria-pressed="true">
 						<input type="radio" class="sr-only" id="download-jpg" name="aspectRatio" value="image/jpeg">
 						JPG
