@@ -63,7 +63,7 @@ window.onload = function () {
   }
 
   // Options
-  actions.querySelector('#crop-standard').onchange = function (event) {
+  actions.querySelector('#editor').onchange = function (event) {
     var e = event || window.event;
     var target = e.target || e.srcElement;
     var cropBoxData;
