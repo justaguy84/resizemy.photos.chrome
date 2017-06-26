@@ -16,6 +16,8 @@ h1{font-size: 24px;}
 
 h2{font-size: 17px;}
 
+.hidden{display: none;}
+
 #wrapper{
   padding: 30px;   
   max-width: 1000px;
