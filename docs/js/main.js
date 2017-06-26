@@ -37,7 +37,6 @@ window.onload = function () {
           console.log(e.type);
           dataHeight.value = Math.round(data.height);
           dataWidth.value = Math.round(data.width);
-          prepareImage.setAttribute('data-option', '{ "width": 160, "height": 90 }');
         },
         zoom: function (e) {
           console.log(e.type, e.detail.ratio);
@@ -70,6 +69,14 @@ window.onload = function () {
     var cropBoxData;
     var canvasData;
     var isRadio;
+    var data;
+
+    data = {
+      method: target.getAttribute('data-method'),
+      target: target.getAttribute('data-target'),
+      option: target.getAttribute('data-option'),
+      secondOption: target.getAttribute('data-second-option')
+    };
 
     if (!cropper) {
       return;
@@ -83,6 +90,7 @@ window.onload = function () {
 
     if (isRadio) {
       options[target.name] = target.value;
+      prepareImage.setAttribute('data-option', data.option);
       options.ready = function () {
         console.log('ready');
       };
