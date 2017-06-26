@@ -9,6 +9,7 @@ window.onload = function () {
   var imageName = image.getAttribute('src');
   var imageWidth = image.naturalWidth;
   var imageHeight = image.naturalHeight;
+  var imageRatio = imageWidth / imageHeight;
   var info = document.getElementById('info');
   var download = document.getElementById('download-btn');
   var prepareImage = document.getElementById('prepareImage');
@@ -33,10 +34,7 @@ window.onload = function () {
         },
         crop: function (e) {
           var data = e.detail;
-
           console.log(e.type);
-          dataHeight.value = Math.round(data.height);
-          dataWidth.value = Math.round(data.width);
         },
         zoom: function (e) {
           console.log(e.type, e.detail.ratio);
@@ -69,6 +67,7 @@ window.onload = function () {
     var cropBoxData;
     var canvasData;
     var isRadio;
+    var isText;
     var data;
 
     data = {
@@ -87,6 +86,7 @@ window.onload = function () {
     }
 
     isRadio = target.type === 'radio';
+    isText = target.type === 'text';
 
     if (isRadio) {
       options[target.name] = target.value;
@@ -94,6 +94,15 @@ window.onload = function () {
       options.ready = function () {
         console.log('ready');
       };
+    }
+
+    if(isText){
+      if (target.id === 'dataWidth'){
+        dataHeight.value = Math.round(target.value * (image.naturalHeight/image.naturalWidth));
+      }
+      else if (target.id === 'dataHeight') {
+        dataWidth.value = Math.round(target.value * (image.naturalWidth/image.naturalHeight));
+      }
     }
 
     // Restart
@@ -193,4 +202,6 @@ window.onload = function () {
 
   document.getElementById('file-name').innerHTML = imageName;
   document.getElementById('file-size').innerHTML = 'Original size: ' + imageWidth + 'x' + imageHeight;
+  dataHeight.value = Math.round(imageHeight);
+  dataWidth.value = Math.round(imageWidth);
 };
