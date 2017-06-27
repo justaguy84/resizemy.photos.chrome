@@ -54,12 +54,6 @@ window.onload = function () {
     $('button[data-method="scale"]').prop('disabled', true);
   }
 
-
-  // Download
-  if (typeof download.download === 'undefined') {
-    download.className += ' disabled';
-  }
-
   // Options
   actions.querySelector('#editor').onchange = function (event) {
     var e = event || window.event;
@@ -128,6 +122,8 @@ window.onload = function () {
     var result;
     var input;
     var data;
+    var cropedImageName = "cropped.";
+    var cropedImageType;
 
     if (!cropper) {
       return;
@@ -180,15 +176,25 @@ window.onload = function () {
         case 'getCroppedCanvas':
           if (result) {
 
-            // Bootstrap's Modal
+            // prepare image and auto download
+
+            // get filetype and set download name
+            cropedImageType = $('input[name="fileType"]:checked').val();
+            if (cropedImageType === 'image/jpeg'){
+              cropedImageName = cropedImageName + 'jpg';
+            }
+            else{
+              cropedImageName = cropedImageName + 'png';
+            }
+
+            //draw image
             $('#getCroppedCanvasModal').find('.modal-body').html(result);
-            var a = $("<a>").attr("href", result.toDataURL('image/jpeg')).attr("download", "cropped.jpg").appendTo("body");
+
+            // start auto download of image
+            var a = $("<a>").attr("href", result.toDataURL(cropedImageType)).attr("download", cropedImageName).appendTo("body");
             a[0].click();
             a.remove();
 
-            if (!download.disabled) {
-              download.href = result.toDataURL('image/jpeg');
-            }
           }
 
           break;
