@@ -125,3 +125,29 @@ a.link{
 .section-header{float:left;width: 100%;}
 
 .section-header h2{float:left;}
+
+#prepareImage{
+background-color: #56CCF2;
+font-size: 20px;
+border:none;
+border-radius: 2px;
+font-family: "Lato", sans-serif;
+padding:20px 40px;
+clear: both;
+float: right;
+margin-top: 15px;
+}
+
+#image-format{
+
+}
+
+#download{text-align: center;
+float:right;}
+
+#info{
+  font-size: 13px;
+  padding-top: 15px;
+}
+
+#info p{margin:0;padding-bottom: 5px;}

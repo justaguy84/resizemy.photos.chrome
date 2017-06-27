@@ -86,7 +86,8 @@ test full html file before implementing as module
 									<label class="box btn cover" aria-pressed="true">
 										<input type="radio" class="sr-only" id="facbook-cover" name="aspectRatio" value="2.6285714286" data-option="{ &quot;width&quot;: 828, &quot;height&quot;: 315 }">
 										<p>
-										Facebook cover
+										Facebook cover<br>
+										828 x 315
 										</p>
 									</label>
 								</div>
@@ -94,7 +95,8 @@ test full html file before implementing as module
 									<label class="box btn profile" aria-pressed="true">
 										<input type="radio" class="sr-only" id="facbook-cover" name="aspectRatio" value="2.6285714286" data-option="{ &quot;width&quot;: 828, &quot;height&quot;: 315 }">
 										<p>
-										Facebook profile
+										Facebook profile<br>
+										180 x 180
 										</p>
 									</label>
 									
@@ -103,7 +105,8 @@ test full html file before implementing as module
 								<label class="box btn post" aria-pressed="true">
 										<input type="radio" class="sr-only" id="facbook-cover" name="aspectRatio" value="2.6285714286" data-option="{ &quot;width&quot;: 828, &quot;height&quot;: 315 }">
 										<p>
-										Facebook post
+										Facebook post<br>
+										600 x 600
 										</p>
 									</label>
 									
@@ -122,6 +125,7 @@ test full html file before implementing as module
 					<p id="file-size"></p>
 				</div>
 				<div id="download">
+					<div id="image-format">
 					<label class="btn active" aria-pressed="true">
 						<input type="radio" id="download-jpg" name="fileType" value="image/jpeg" checked="checked">
 						JPG
@@ -130,7 +134,8 @@ test full html file before implementing as module
 						<input type="radio" id="download-png" name="fileType" value="image/png">
 						PNG
 					</label>
-					<button id="prepareImage" class="btn btn-primary prepare-button" data-method="getCroppedCanvas" data-option="{ &quot;width&quot;: 1920, &quot;height&quot;: 1080 }">Prepare image and download</button>
+					</div>
+					<button id="prepareImage" class="btn btn-primary prepare-button" data-method="getCroppedCanvas" data-option="{ &quot;width&quot;: 1920, &quot;height&quot;: 1080 }">Download Image</button>
 				</div>
 			</div>
 		</div>
