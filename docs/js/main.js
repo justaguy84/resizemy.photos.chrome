@@ -15,6 +15,7 @@ window.onload = function () {
   var options = {
     aspectRatio: 16 / 9,
     zoomable: false,
+    checkCrossOrigin: true,
     preview: '.img-preview',
     ready: function (e) {
       console.log(e.type);
@@ -42,13 +43,18 @@ window.onload = function () {
   var image = container.getElementsByTagName('img').item(0);
   if (imageUrl !==""){
     image.src = imageUrl;
+    image.onload = function(){
+      //create cropper    
+      var cropper = new Cropper(image, options);
+    }
+  }
+  else{
+    //create cropper    
+    var cropper = new Cropper(image, options);
   }
   var imageName = image.getAttribute('src');
   var imageWidth = image.naturalWidth;
   var imageHeight = image.naturalHeight;
-
-  //create cropper    
-  var cropper = new Cropper(image, options);
   var originalImageURL = image.src;
 
   //socail tabs
