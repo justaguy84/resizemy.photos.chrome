@@ -1,35 +1,246 @@
 <!doctype html>
 <!--
- This page is shown when the extension button is clicked, because the
- "browser_action" field in manifest.json contains the "default_popup" key with
- value "popup.html".
+test full html file before implementing as module
  -->
-<html>
+<html lang="en">
   <head>
-    <title>resizemy.photos popup</title>
-    <style>
-      body {
-        font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
-        font-size: 100%;
-      }
-      #status {
-        /* avoid an excessively wide status text */
-        white-space: pre;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        max-width: 400px;
-      }
-    </style>
+  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Resize My Photos Test Page</title>
+    
+  <!-- Latest compiled and minified cropper CSS -->
+  <link rel="stylesheet" type="text/css" href="css/cropper.min.css">
+  
+  <link href="css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
-    <!--
-      - JavaScript and HTML must be in separate files: see our Content Security
-      - Policy documentation[1] for details and explanation.
-      -
-      - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
-     -->
-    <script src="inject.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/general.css">
+
   </head>
   <body>
+    <div id="wrapper">
+      
+      <div id="editor">
+        
+        <h1>Choose your image size</h1>
+
+        <div id="custom" class="editor-section">
+          <h2>Custom size</h2>
+          <div id="custom-sizes">
+            Width <input type="text" name="custom-width" id="dataWidth"> PX 
+            <a class="link">
+              <i class="fa fa-link" aria-hidden="true"></i>
+              <!-- <i class="fa fa-chain-broken" aria-hidden="true"></i> -->
+            </a>
+            Height <input type="text" name="custom-height" id="dataHeight"> PX
+          </div>
+        </div>
+        <div id="preset" data-toggle="buttons">
+          <div id="standard" class="editor-section">
+            <h2>Standard</h2>
+            <div>
+              <div>
+                <label class="box btn active desktop" aria-pressed="true">
+                  <input type="radio" class="sr-only" id="Desktop-ratio" name="aspectRatio" value="1.7777777777777777" data-option="{ &quot;width&quot;: 1920, &quot;height&quot;: 1080 }">
+                  <p>
+                  Desktop<br>
+                  1920 x 1080
+                  </p>
+                </label>
+              </div>
+              <div>
+                <label class="box btn laptop" aria-pressed="true">
+                          <input type="radio" class="sr-only" id="Laptop-ratio" name="aspectRatio" value="1.6" data-option="{ &quot;width&quot;: 1440, &quot;height&quot;: 900 }">
+                  <p>
+                  Laptop<br>
+                  1440 x 900
+                  </p>
+                </label>
+              </div>
+              <div>
+                <label class="box btn thumbnail" aria-pressed="true">
+                          <input type="radio" class="sr-only" id="Thumbnail-ratio" name="aspectRatio" value="1" data-option="{ &quot;width&quot;: 200, &quot;height&quot;: 200 }">
+                  <p>
+                  Thumbnail<br>
+                  200 x 200
+                  </p>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div id="social" class="editor-section">
+            <div class="section-header">
+              <h2>Social networks</h2>
+              <ul id="social-icons">
+                <li class="fb"><i class="fa fa-facebook-official" aria-hidden="true"></i></li>
+                <li class="in"><i class="fa fa-linkedin-square" aria-hidden="true"></i></li>
+                <li class="gplus"><i class="fa fa-google-plus-official" aria-hidden="true"></i></li>
+                <li class="pn"><i class="fa fa-pinterest" aria-hidden="true"></i></li>
+              </ul>
+            </div>
+            <div id="social-boxes">
+              <div id="fb" class="facebook active">
+                <div class="box cover">
+                  <label class="box btn cover" aria-pressed="true">
+                    <input type="radio" class="sr-only" id="facbook-cover" name="aspectRatio" value="2.6285714286" data-option="{ &quot;width&quot;: 828, &quot;height&quot;: 315 }">
+                    <p>
+                    Facebook cover<br>
+                    828 x 315
+                    </p>
+                  </label>
+                </div>
+                <div class="box profile">
+                  <label class="box btn profile" aria-pressed="true">
+                    <input type="radio" class="sr-only" id="facbook-cover" name="aspectRatio" value="2.6285714286" data-option="{ &quot;width&quot;: 828, &quot;height&quot;: 315 }">
+                    <p>
+                    Facebook profile<br>
+                    180 x 180
+                    </p>
+                  </label>
+                  
+                </div>
+                <div class="box post">
+                <label class="box btn post" aria-pressed="true">
+                    <input type="radio" class="sr-only" id="facbook-cover" name="aspectRatio" value="2.6285714286" data-option="{ &quot;width&quot;: 828, &quot;height&quot;: 315 }">
+                    <p>
+                    Facebook post<br>
+                    600 x 600
+                    </p>
+                  </label>
+                  
+                </div>
+              </div>
+              <div id="in" class="linkedin">
+                <div class="box cover">
+                  <label class="box btn cover" aria-pressed="true">
+                    <input type="radio" class="sr-only" id="facbook-cover" name="aspectRatio" value="2.6285714286" data-option="{ &quot;width&quot;: 828, &quot;height&quot;: 315 }">
+                    <p>
+                    linkedin cover<br>
+                    828 x 315
+                    </p>
+                  </label>
+                </div>
+                <div class="box profile">
+                  <label class="box btn profile" aria-pressed="true">
+                    <input type="radio" class="sr-only" id="facbook-cover" name="aspectRatio" value="2.6285714286" data-option="{ &quot;width&quot;: 828, &quot;height&quot;: 315 }">
+                    <p>
+                    linkedin profile<br>
+                    180 x 180
+                    </p>
+                  </label>
+                  
+                </div>
+                <div class="box post">
+                <label class="box btn post" aria-pressed="true">
+                    <input type="radio" class="sr-only" id="facbook-cover" name="aspectRatio" value="2.6285714286" data-option="{ &quot;width&quot;: 828, &quot;height&quot;: 315 }">
+                    <p>
+                    linkedin post<br>
+                    600 x 600
+                    </p>
+                  </label>
+                  
+                </div>
+              </div>
+              <div id="gplus" class="googlePlus">
+                <div class="box cover">
+                  <label class="box btn cover" aria-pressed="true">
+                    <input type="radio" class="sr-only" id="facbook-cover" name="aspectRatio" value="2.6285714286" data-option="{ &quot;width&quot;: 828, &quot;height&quot;: 315 }">
+                    <p>
+                    Gplus cover<br>
+                    828 x 315
+                    </p>
+                  </label>
+                </div>
+                <div class="box profile">
+                  <label class="box btn profile" aria-pressed="true">
+                    <input type="radio" class="sr-only" id="facbook-cover" name="aspectRatio" value="2.6285714286" data-option="{ &quot;width&quot;: 828, &quot;height&quot;: 315 }">
+                    <p>
+                    Gplus profile<br>
+                    180 x 180
+                    </p>
+                  </label>
+                  
+                </div>
+                <div class="box post">
+                <label class="box btn post" aria-pressed="true">
+                    <input type="radio" class="sr-only" id="facbook-cover" name="aspectRatio" value="2.6285714286" data-option="{ &quot;width&quot;: 828, &quot;height&quot;: 315 }">
+                    <p>
+                    Gplus post<br>
+                    600 x 600
+                    </p>
+                  </label>
+                  
+                </div>
+              </div>
+              <div id="pn" class="pinterest">
+                <div class="box cover">
+                  <label class="box btn cover" aria-pressed="true">
+                    <input type="radio" class="sr-only" id="facbook-cover" name="aspectRatio" value="2.6285714286" data-option="{ &quot;width&quot;: 828, &quot;height&quot;: 315 }">
+                    <p>
+                    pinterest cover<br>
+                    828 x 315
+                    </p>
+                  </label>
+                </div>
+                <div class="box profile">
+                  <label class="box btn profile" aria-pressed="true">
+                    <input type="radio" class="sr-only" id="facbook-cover" name="aspectRatio" value="2.6285714286" data-option="{ &quot;width&quot;: 828, &quot;height&quot;: 315 }">
+                    <p>
+                    pinterest profile<br>
+                    180 x 180
+                    </p>
+                  </label>
+                  
+                </div>
+                <div class="box post">
+                <label class="box btn post" aria-pressed="true">
+                    <input type="radio" class="sr-only" id="facbook-cover" name="aspectRatio" value="2.6285714286" data-option="{ &quot;width&quot;: 828, &quot;height&quot;: 315 }">
+                    <p>
+                    pinterest post<br>
+                    600 x 600
+                    </p>
+                  </label>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="the-image">
+        <div id="img-container">
+          <img id="image" src="test-image.jpeg" class="img-responsive" alt="Image to crop">
+        </div>
+        <div id="info">
+          <p id="file-name"></p>
+          <p id="file-size"></p>
+        </div>
+        <div id="download">
+          <div id="image-format">
+          <label class="btn active" aria-pressed="true">
+            <input type="radio" id="download-jpg" name="fileType" value="image/jpeg" checked="checked">
+            JPG
+          </label>
+          <label class="btn active" aria-pressed="true">
+            <input type="radio" id="download-png" name="fileType" value="image/png">
+            PNG
+          </label>
+          </div>
+          <button id="prepareImage" class="btn btn-primary prepare-button" data-method="getCroppedCanvas" data-option="{ &quot;width&quot;: 1920, &quot;height&quot;: 1080 }">Download Image</button>
+        </div>
+      </div>
+    </div>
+    <!-- Show the cropped image in modal -->
+        <div class="hidden" id="getCroppedCanvasModal" role="dialog" aria-hidden="true" aria-labelledby="getCroppedCanvasTitle" tabindex="-1">
+          <div class="modal-body"></div>
+        </div><!-- /.modal -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+      <script src="js/jquery.min.js"></script>
+    <!-- Latest compiled and minified Cropper JavaScript -->
+    <script type="text/javascript" src="js/cropper.min.js"></script>
+    <!-- Main javascript file -->
+    <script type="text/javascript" src="js/main.js"></script>
   </body>
 </html>
-

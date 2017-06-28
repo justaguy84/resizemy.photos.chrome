@@ -1,10 +1,13 @@
 window.onload = function () {
 
   'use strict';
-
   //set vars for common elements
   var Cropper = window.Cropper;
   var container = document.querySelector('#img-container');
+  var image = container.getElementsByTagName('img').item(0);
+  var imageName = image.getAttribute('src');
+  var imageWidth = image.naturalWidth;
+  var imageHeight = image.naturalHeight;
   var prepareImage = document.getElementById('prepareImage');
   var actions = document.getElementById('editor');
   var download = document.getElementById('download');
@@ -13,42 +16,29 @@ window.onload = function () {
 
   //prepare cropper options
   var options = {
-    aspectRatio: 16 / 9,
-    zoomable: false,
-    preview: '.img-preview',
-    ready: function (e) {
-      console.log(e.type);
-      },
-    cropstart: function (e) {
-      console.log(e.type, e.detail.action);
-    },
-    cropmove: function (e) {
-      console.log(e.type, e.detail.action);
-    },
-    cropend: function (e) {
-      console.log(e.type, e.detail.action);
-    },
-    crop: function (e) {
-      var data = e.detail;
-      console.log(e.type);
-    },
-    zoom: function (e) {
-      console.log(e.type, e.detail.ratio);
-    }
-  };
-
-  // prepare image
-  var imageUrl = window.location.hash.substring(1);
-  if (imageUrl !==""){
-    var image = document.createElement("img");
-    image.src = imageUrl;
-  }
-  else{
-    var image = container.getElementsByTagName('img').item(0);
-  }
-  var imageName = image.getAttribute('src');
-  var imageWidth = image.naturalWidth;
-  var imageHeight = image.naturalHeight;
+        aspectRatio: 16 / 9,
+        zoomable: false,
+        preview: '.img-preview',
+        ready: function (e) {
+          console.log(e.type);
+        },
+        cropstart: function (e) {
+          console.log(e.type, e.detail.action);
+        },
+        cropmove: function (e) {
+          console.log(e.type, e.detail.action);
+        },
+        cropend: function (e) {
+          console.log(e.type, e.detail.action);
+        },
+        crop: function (e) {
+          var data = e.detail;
+          console.log(e.type);
+        },
+        zoom: function (e) {
+          console.log(e.type, e.detail.ratio);
+        }
+      };
 
   //create cropper    
   var cropper = new Cropper(image, options);

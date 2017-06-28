@@ -12,7 +12,7 @@ function getClickHandler() {
     var url = 'crop.html#' + info.srcUrl;
 
     // Create a new window to the info page.
-    chrome.windows.create({ url: url, width: 520, height: 660 });
+    chrome.tabs.create({ url: url });
   };
 };
 
