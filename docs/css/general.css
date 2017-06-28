@@ -29,8 +29,9 @@ float:left;
 }
 
 #the-image{
-width:50%;
+width:48%;
 float:left;
+margin-left: 2%;
 }
 
 #img-container img {
@@ -109,3 +110,44 @@ a.link{
   padding-bottom: 30px;
   float: left;
 }
+
+#social ul li{
+  list-style: none;
+  float: left;
+  font-size:24px;
+  color:#888;
+  padding-right: 10px;
+
+}
+
+#social ul{float: right;padding-right: 20px;}
+
+.section-header{float:left;width: 100%;}
+
+.section-header h2{float:left;}
+
+#prepareImage{
+background-color: #56CCF2;
+font-size: 20px;
+border:none;
+border-radius: 2px;
+font-family: "Lato", sans-serif;
+padding:20px 40px;
+clear: both;
+float: right;
+margin-top: 15px;
+}
+
+#image-format{
+
+}
+
+#download{text-align: center;
+float:right;}
+
+#info{
+  font-size: 13px;
+  padding-top: 15px;
+}
+
+#info p{margin:0;padding-bottom: 5px;}
