@@ -39,12 +39,9 @@ window.onload = function () {
 
   // prepare image
   var imageUrl = window.location.hash.substring(1);
+  var image = container.getElementsByTagName('img').item(0);
   if (imageUrl !==""){
-    var image = document.createElement("img");
     image.src = imageUrl;
-  }
-  else{
-    var image = container.getElementsByTagName('img').item(0);
   }
   var imageName = image.getAttribute('src');
   var imageWidth = image.naturalWidth;
