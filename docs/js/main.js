@@ -54,6 +54,17 @@ window.onload = function () {
     $('button[data-method="scale"]').prop('disabled', true);
   }
 
+  //socail tabs
+  actions.querySelector('#social-icons').onclick = function (event){
+    var e = event || window.event;
+    var target = e.target || e.srcElement;
+    var socialTarget = '#'+target.parentElement.className;
+    var boxes = document.getElementById('social-boxes');
+
+    $("#social-boxes >div.active").removeClass("active");
+    boxes.querySelector(socialTarget).classList.add("active")
+  }
+
   // Options
   actions.querySelector('#editor').onchange = function (event) {
     var e = event || window.event;
@@ -86,6 +97,8 @@ window.onload = function () {
 
     if (isRadio) {
       options[target.name] = target.value;
+      $('.box.btn.active').removeClass('active');
+      target.parentNode.classList.add("active");
       prepareImage.setAttribute('data-option', data.option);
       options.ready = function () {
         console.log('ready');

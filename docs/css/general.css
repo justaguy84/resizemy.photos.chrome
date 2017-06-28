@@ -151,3 +151,6 @@ float:right;}
 }
 
 #info p{margin:0;padding-bottom: 5px;}
+
+#social-boxes div {display:none;}
+#social-boxes div.active,#social-boxes div.active .box{display: block!important;}
