@@ -58,6 +58,12 @@ margin-left: 2%;
   padding: 10px;
   margin-left: 5px;
 }
+#custom-sizes input.active{
+  color: #337ab7!important;
+  border-color: #2e6da4;
+  outline: 5px auto -webkit-focus-ring-color!important;
+  outline-offset: -2px!important;
+}
 
 .box{
   display: table;
