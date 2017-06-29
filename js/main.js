@@ -15,8 +15,8 @@ window.onload = function () {
   var options = {
     aspectRatio: 16 / 9,
     zoomable: false,
-    checkCrossOrigin: true,
-    preview: '.img-preview',
+    checkCrossOrigin: false,
+    viewMode: 3,
     ready: function (e) {
       console.log(e.type);
       },
@@ -47,7 +47,6 @@ window.onload = function () {
     xhr.open("GET", imageUrl, true);
     xhr.onreadystatechange = function() {
       if (xhr.readyState == 4) {
-        //replacing cropper image url
         var result = cropper['replace'](imageUrl);
       }
     }
