@@ -9,7 +9,7 @@ function getClickHandler() {
   return function(info, tab) {
 
     // The srcUrl property is only available for image elements.
-    var url = 'crop.html#' + info.srcUrl;
+    var url = 'index.html#' + info.srcUrl;
 
     // Create a new window to the info page.
     chrome.tabs.create({ url: url });

@@ -40,21 +40,37 @@ window.onload = function () {
 
   // prepare image
   var imageUrl = window.location.hash.substring(1);
-  var image = container.getElementsByTagName('img').item(0);
   if (imageUrl !==""){
+    var image = container.getElementsByTagName('img').item(0);
     image.src = imageUrl;
-    image.onload = function(){
-      //create cropper    
-      var cropper = new Cropper(image, options);
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", imageUrl, true);
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState == 4) {
+        //replacing cropper image url
+        var result = cropper['replace'](imageUrl);
+      }
     }
+    xhr.send();
   }
   else{
-    //create cropper    
-    var cropper = new Cropper(image, options);
+    var image = container.getElementsByTagName('img').item(0);
   }
-  var imageName = image.getAttribute('src');
-  var imageWidth = image.naturalWidth;
-  var imageHeight = image.naturalHeight;
+  image.onload = function(){
+    var imageName = image.getAttribute('src');
+    var imageWidth = image.naturalWidth;
+    var imageHeight = image.naturalHeight;
+
+    // preset info on page
+    document.getElementById('file-name').innerHTML = imageName;
+    document.getElementById('file-size').innerHTML = 'Original size: ' + imageWidth + 'x' + imageHeight;
+    dataHeight.value = Math.round(imageHeight);
+    dataWidth.value = Math.round(imageWidth);
+  }
+
+  //create cropper
+  var cropper = new Cropper(image, options);
+  
   var originalImageURL = image.src;
 
   //socail tabs
@@ -178,9 +194,4 @@ window.onload = function () {
     }
   };
 
-  // preset info on page
-  document.getElementById('file-name').innerHTML = imageName;
-  document.getElementById('file-size').innerHTML = 'Original size: ' + imageWidth + 'x' + imageHeight;
-  dataHeight.value = Math.round(imageHeight);
-  dataWidth.value = Math.round(imageWidth);
 };

@@ -1,13 +1,10 @@
 window.onload = function () {
 
   'use strict';
+
   //set vars for common elements
   var Cropper = window.Cropper;
   var container = document.querySelector('#img-container');
-  var image = container.getElementsByTagName('img').item(0);
-  var imageName = image.getAttribute('src');
-  var imageWidth = image.naturalWidth;
-  var imageHeight = image.naturalHeight;
   var prepareImage = document.getElementById('prepareImage');
   var actions = document.getElementById('editor');
   var download = document.getElementById('download');
@@ -16,32 +13,64 @@ window.onload = function () {
 
   //prepare cropper options
   var options = {
-        aspectRatio: 16 / 9,
-        zoomable: false,
-        preview: '.img-preview',
-        ready: function (e) {
-          console.log(e.type);
-        },
-        cropstart: function (e) {
-          console.log(e.type, e.detail.action);
-        },
-        cropmove: function (e) {
-          console.log(e.type, e.detail.action);
-        },
-        cropend: function (e) {
-          console.log(e.type, e.detail.action);
-        },
-        crop: function (e) {
-          var data = e.detail;
-          console.log(e.type);
-        },
-        zoom: function (e) {
-          console.log(e.type, e.detail.ratio);
-        }
-      };
+    aspectRatio: 16 / 9,
+    zoomable: false,
+    checkCrossOrigin: true,
+    preview: '.img-preview',
+    ready: function (e) {
+      console.log(e.type);
+      },
+    cropstart: function (e) {
+      console.log(e.type, e.detail.action);
+    },
+    cropmove: function (e) {
+      console.log(e.type, e.detail.action);
+    },
+    cropend: function (e) {
+      console.log(e.type, e.detail.action);
+    },
+    crop: function (e) {
+      var data = e.detail;
+      console.log(e.type);
+    },
+    zoom: function (e) {
+      console.log(e.type, e.detail.ratio);
+    }
+  };
 
-  //create cropper    
+  // prepare image
+  var imageUrl = window.location.hash.substring(1);
+  if (imageUrl !==""){
+    var image = container.getElementsByTagName('img').item(0);
+    image.src = imageUrl;
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", imageUrl, true);
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState == 4) {
+        //replacing cropper image url
+        var result = cropper['replace'](imageUrl);
+      }
+    }
+    xhr.send();
+  }
+  else{
+    var image = container.getElementsByTagName('img').item(0);
+  }
+  image.onload = function(){
+    var imageName = image.getAttribute('src');
+    var imageWidth = image.naturalWidth;
+    var imageHeight = image.naturalHeight;
+
+    // preset info on page
+    document.getElementById('file-name').innerHTML = imageName;
+    document.getElementById('file-size').innerHTML = 'Original size: ' + imageWidth + 'x' + imageHeight;
+    dataHeight.value = Math.round(imageHeight);
+    dataWidth.value = Math.round(imageWidth);
+  }
+
+  //create cropper
   var cropper = new Cropper(image, options);
+  
   var originalImageURL = image.src;
 
   //socail tabs
@@ -165,9 +194,4 @@ window.onload = function () {
     }
   };
 
-  // preset info on page
-  document.getElementById('file-name').innerHTML = imageName;
-  document.getElementById('file-size').innerHTML = 'Original size: ' + imageWidth + 'x' + imageHeight;
-  dataHeight.value = Math.round(imageHeight);
-  dataWidth.value = Math.round(imageWidth);
 };
