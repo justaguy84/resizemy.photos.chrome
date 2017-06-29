@@ -34,7 +34,7 @@ float:left;
 margin-left: 2%;
 }
 
-#img-container img {
+#img-container,#img-container img {
   max-width: 100%; /* This rule is very important, please do not ignore this! */
 }
 .box{

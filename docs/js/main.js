@@ -15,8 +15,7 @@ window.onload = function () {
   var options = {
     aspectRatio: 16 / 9,
     zoomable: false,
-    checkCrossOrigin: false,
-    viewMode: 3,
+    checkCrossOrigin: true,
     ready: function (e) {
       console.log(e.type);
       },
@@ -47,7 +46,7 @@ window.onload = function () {
     xhr.open("GET", imageUrl, true);
     xhr.onreadystatechange = function() {
       if (xhr.readyState == 4) {
-        var result = cropper['replace'](imageUrl);
+        cropper['replace'](imageUrl);
       }
     }
     xhr.send();
