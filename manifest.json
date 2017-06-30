@@ -3,8 +3,9 @@
 
   "name": "resizemy.photos",
   "description": "This extension allows to crop images from websites",
-  "version": "1.0",
-
+  "version": "1.1",
+  "homepage_url": "http://resizemy.photos/",
+  "author": "Guy Peri",
   "browser_action": {
     "default_icon": "icon.png",
     "default_title": "resizemy.photos"
