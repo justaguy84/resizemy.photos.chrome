@@ -72,10 +72,18 @@ margin-left: 2%;
   text-align: center;
   margin-right: 10px;
   position: relative;
+  transition:all 0.2s ease; 
 }
 
 .box:hover{
   cursor: pointer;
+  background-color: #56CCF2;
+  border-color: #56CCF2;
+  transition:all 0.2s ease; 
+}
+
+.box:hover p{
+color:#333;
 }
 
 .box p{
@@ -202,3 +210,13 @@ float:right;}
 
 #social-boxes div {display:none;}
 #social-boxes div.active,#social-boxes div.active .box{display: table!important;}
+
+button#prepareImage:hover {
+cursor:pointer;
+background-color: #10a0d1;
+transition:all 0.1s ease;
+}
+
+button#prepareImage{
+transition:all 0.2s ease; 
+}
