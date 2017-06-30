@@ -41,15 +41,16 @@ margin-left: 2%;
   background-color: #504e51;
   padding-left: 0px!important;
   padding-right: 0px!important;
+  border:2px solid #504e51;
 }
 .box.btn.active{
-  color: #337ab7!important;
-  border-color: #2e6da4;
-  outline: 5px auto -webkit-focus-ring-color!important;
-  outline-offset: -2px!important;
+  color: #56CCF2!important;
+  border: 2px solid #56CCF2;
+  /*outline: 5px auto -webkit-focus-ring-color!important;*/
+  /*outline-offset: -2px!important;*/
 }
 .box.btn:hover{
-  color: #337ab7!important;
+  color: #56CCF2!important;
 }
 #custom-sizes input{
   background-color: #504e51;
@@ -59,10 +60,10 @@ margin-left: 2%;
   margin-left: 5px;
 }
 #custom-sizes input.active{
-  color: #337ab7!important;
-  border-color: #2e6da4;
-  outline: 5px auto -webkit-focus-ring-color!important;
-  outline-offset: -2px!important;
+  color: #56CCF2!important;
+  border: 2px solid #56CCF2;
+  /*outline: 5px auto -webkit-focus-ring-color!important;*/
+  /*outline-offset: -2px!important;*/
 }
 
 .box{
@@ -71,6 +72,18 @@ margin-left: 2%;
   text-align: center;
   margin-right: 10px;
   position: relative;
+  transition:all 0.2s ease; 
+}
+
+.box:hover{
+  cursor: pointer;
+  background-color: #56CCF2;
+  border-color: #56CCF2;
+  transition:all 0.2s ease; 
+}
+
+.box:hover p{
+color:#333;
 }
 
 .box p{
@@ -96,8 +109,8 @@ a.link{
 }
 
 .facebook .box.cover{
-  width:200px;
-  height:74px;
+  width:180px;
+  height:66px;
 }
 
 .facebook .box.profile{
@@ -108,6 +121,43 @@ a.link{
 .facebook .box.post{
   width:130px;
   height:130px;
+}
+
+
+/*4*/
+.linkedin .box.cover{
+  width:180px;
+  height:45px;
+}
+
+/*1*/
+.linkedin .box.profile{
+  width:80px;
+  height:80px;
+}
+
+/*3*/
+.linkedin .box.hero{
+  width:150px;
+  height:50px;
+}
+
+/*1.77*/
+.googlePlus .box.cover{
+  width:220px;
+  height:124px;
+}
+
+/*1*/
+.googlePlus .box.profile{
+  width:70px;
+  height:70px;
+}
+
+/*1.33*/
+.googlePlus .box.shared{
+  width:120px;
+  height:90px;
 }
 
 .editor-section{
@@ -159,4 +209,14 @@ float:right;}
 #info p{margin:0;padding-bottom: 5px;}
 
 #social-boxes div {display:none;}
-#social-boxes div.active,#social-boxes div.active .box{display: block!important;}
+#social-boxes div.active,#social-boxes div.active .box{display: table!important;}
+
+button#prepareImage:hover {
+cursor:pointer;
+background-color: #10a0d1;
+transition:all 0.1s ease;
+}
+
+button#prepareImage{
+transition:all 0.2s ease; 
+}
