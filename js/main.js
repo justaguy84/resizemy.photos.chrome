@@ -46,7 +46,11 @@ window.onload = function () {
     xhr.open("GET", imageUrl, true);
     xhr.onreadystatechange = function() {
       if (xhr.readyState == 4) {
-        cropper['replace'](imageUrl);
+        new Cropper(image, {
+          ready: function () {
+            cropper['replace'](imageUrl);
+          }
+        });
       }
     }
     xhr.send();
