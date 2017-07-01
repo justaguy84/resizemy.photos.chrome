@@ -16,10 +16,6 @@ function getClickHandler() {
   };
 };
 
-chrome.browserAction.onClicked.addListener(function(tab) {
-  chrome.tabs.executeScript(null, {file: "js/hover.js"});
-});
-
 /**
  * Create a context menu which will only show up for images.
  */
