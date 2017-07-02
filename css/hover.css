@@ -1,1 +1,8 @@
-//css file for hover on images function
+.resizeMyPhoto{
+	background-color:#56CCF2;
+	color:#333333;
+	border-radius:2px;
+	font-size:12px;
+	padding:6px 10px;
+	display: none;
+}
