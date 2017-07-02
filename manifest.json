@@ -24,6 +24,9 @@
       "js": ["js/hover.js"]
     }
   ],
+  "web_accessible_resources": [
+    "/icons/button-icon.png"
+  ],
   "permissions" : [
     "activeTab",
     "contextMenus",

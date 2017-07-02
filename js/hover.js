@@ -9,15 +9,16 @@ document.addEventListener("mouseout", removeCropLink, true);
 function addCropLink(){
 	var target = event.target;
 	if (target instanceof HTMLImageElement){
-		var hoverDiv = document.createElement("div");
-		hoverDiv.setAttribute("class", "resizeMyPhoto");
-		hoverDiv.setAttribute("id", "resizeMyPhoto");
 		var cropLink = document.createElement("a");
+		cropLink.setAttribute("class", "resizeMyPhoto");
+		cropLink.setAttribute("id", "resizeMyPhoto");
+		cropLink.setAttribute("target", "_blank");
 		cropLink.innerHTML += "Crop/Resize";
 		cropLink.href = chrome.extension.getURL("index.html#");
-		cropLink.href = cropLink.href + target.src
-		hoverDiv.appendChild(cropLink);
-		target.parentNode.insertBefore(hoverDiv, target.nextSibling);
+		cropLink.href = cropLink.href + target.src;
+		target.parentNode.style.position = "relative";
+		target.parentNode.style.display = "inline-block";
+		target.parentNode.insertBefore(cropLink, target.nextSibling);
 	}
 }
 
@@ -25,7 +26,7 @@ function addCropLink(){
 function removeCropLink(){
 	var target = event.target;
 	if (target instanceof HTMLImageElement){
-		var hoverDiv = document.getElementById("resizeMyPhoto");
-		hoverDiv.parentNode.removeChild(hoverDiv);
+		var cropLink = document.getElementById("resizeMyPhoto");
+		cropLink.parentNode.removeChild(cropLink);
 	}
 }

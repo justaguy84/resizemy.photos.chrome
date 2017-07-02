@@ -4,5 +4,7 @@
 	border-radius:2px;
 	font-size:12px;
 	padding:6px 10px;
-	display: none;
+	position:absolute;
+	bottom:0;
+	right:0;
 }
