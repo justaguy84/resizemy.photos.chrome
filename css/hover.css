@@ -1,4 +1,8 @@
-.resizeMyPhoto{
+#resizeMyPhotoDiv{
+	position: relative;
+	display: inline-block;
+}
+#resizeMyPhoto{
 	background-color:#56CCF2;
 	color:#333333;
 	border-radius:2px;

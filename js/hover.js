@@ -9,31 +9,41 @@ function setLink(){
 	if (target instanceof HTMLImageElement){
 		// make sure no links are visible
 		var cropLink = document.getElementById("resizeMyPhoto");
-		if (cropLink !== null){
-			cropLink.parentNode.removeChild(cropLink);
+		var cropDiv = document.getElementById("resizeMyPhotoDiv");
+		if (cropDiv !== null){
+			var fragment = document.createDocumentFragment();
+			fragment.appendChild(cropDiv.firstElementChild);
+			cropDiv.removeChild(cropLink);
+			cropDiv.parentNode.replaceChild(fragment, cropDiv);
 		}
 		// create the link
 		else{
+			cropDiv = document.createElement("div");
+			cropDiv.setAttribute("id", "resizeMyPhotoDiv");
+			target.parentNode.appendChild(cropDiv);
+			cropDiv.appendChild(target);
 			cropLink = document.createElement("a");
 			cropLink.setAttribute("class", "resizeMyPhoto");
 			cropLink.setAttribute("id", "resizeMyPhoto");
 			cropLink.setAttribute("target", "_blank");
 			cropLink.innerHTML += "Crop/Resize";
 			cropLink.href = chrome.extension.getURL("index.html#") + target.src;
-			target.parentNode.style.position = "relative";
-			target.parentNode.style.display = "inline-block";
-			target.parentNode.insertBefore(cropLink, target.nextSibling);
+			cropDiv.appendChild(cropLink);
 		}
 	}
 	else{
 		var cropLink = document.getElementById("resizeMyPhoto");
+		var cropDiv = document.getElementById("resizeMyPhotoDiv");
 		// make sure mouse is not on link
 		if(target == cropLink || cropLink == null){
 			return;
 		}
 		// remove the link
 		else{
-			cropLink.parentNode.removeChild(cropLink);
+			var fragment = document.createDocumentFragment();
+			fragment.appendChild(cropDiv.firstElementChild);
+			cropDiv.removeChild(cropLink);
+			cropDiv.parentNode.replaceChild(fragment, cropDiv);
 		}
 	}
 }
