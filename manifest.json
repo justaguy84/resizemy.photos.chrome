@@ -25,7 +25,11 @@
     }
   ],
   "web_accessible_resources": [
-    "/icons/button-icon.png"
+    "/icons/button-icon.png",
+    "index.html",
+    "loading.gif",
+    "js/main.js",
+    "css/general.css"
   ],
   "permissions" : [
     "activeTab",
