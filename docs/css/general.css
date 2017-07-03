@@ -67,12 +67,12 @@ margin-left: 2%;
 }
 
 .box{
-  display: table;
   float:left;
   text-align: center;
-  margin-right: 10px;
   position: relative;
-  transition:all 0.2s ease; 
+  transition:all 0.2s ease;
+  min-width: 120px;
+  margin: 0 10px 10px 0;
 }
 
 .box:hover{
@@ -87,78 +87,13 @@ color:#333;
 }
 
 .box p{
- display: table-cell;
- vertical-align: middle;
-}
-
-.box.desktop{
-  width:202px;
-  height: 126px;
-}
-.box.laptop{
-  width: 144px;
-  height: 90px;
-}
-.box.thumbnail{
-  width: 100px;
-  height: 100px;
+ 
 }
 
 a.link{
   padding:10px;
 }
 
-.facebook .box.cover{
-  width:180px;
-  height:66px;
-}
-
-.facebook .box.profile{
-  width:90px;
-  height:90px;
-}
-
-.facebook .box.post{
-  width:130px;
-  height:130px;
-}
-
-
-/*4*/
-.linkedin .box.cover{
-  width:180px;
-  height:45px;
-}
-
-/*1*/
-.linkedin .box.profile{
-  width:80px;
-  height:80px;
-}
-
-/*3*/
-.linkedin .box.hero{
-  width:150px;
-  height:50px;
-}
-
-/*1.77*/
-.googlePlus .box.cover{
-  width:220px;
-  height:124px;
-}
-
-/*1*/
-.googlePlus .box.profile{
-  width:70px;
-  height:70px;
-}
-
-/*1.33*/
-.googlePlus .box.shared{
-  width:120px;
-  height:90px;
-}
 
 .editor-section{
   clear:both;
@@ -166,17 +101,6 @@ a.link{
   padding-bottom: 30px;
   float: left;
 }
-
-#social ul li{
-  list-style: none;
-  float: left;
-  font-size:24px;
-  color:#888;
-  padding-right: 10px;
-
-}
-
-#social ul{float: right;padding-right: 20px;}
 
 .section-header{float:left;width: 100%;}
 
@@ -207,9 +131,6 @@ float:right;}
 }
 
 #info p{margin:0;padding-bottom: 5px;}
-
-#social-boxes div {display:none;}
-#social-boxes div.active,#social-boxes div.active .box{display: table!important;}
 
 button#prepareImage:hover {
 cursor:pointer;
