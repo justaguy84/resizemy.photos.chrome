@@ -1,3 +1,14 @@
+//prepare google analytics tracking
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-101979275-1', 'auto');
+ga('set', 'checkProtocolTask', function(){}); // Removes failing protocol check. @see: http://stackoverflow.com/a/22152353/1958200
+ga('require', 'displayfeatures');
+ga('send', 'pageview', '/cropper.html');
+
 window.onload = function () {
 
   'use strict';
@@ -42,6 +53,7 @@ window.onload = function () {
   if (imageUrl !==""){
     var image = container.getElementsByTagName('img').item(0);
     image.src = imageUrl;
+    ga('send', 'event', 'image', 'image loaded',imageUrl);
     var xhr = new XMLHttpRequest();
     xhr.open("GET", imageUrl, true);
     xhr.onreadystatechange = function() {
@@ -76,6 +88,7 @@ window.onload = function () {
   var originalImageURL = image.src;
 
   //socail tabs
+  /*
   actions.querySelector('#social-icons').onclick = function (event){
     var e = event || window.event;
     var target = e.target || e.srcElement;
@@ -85,7 +98,7 @@ window.onload = function () {
       $("#social-boxes >div.active").removeClass("active");
       boxes.querySelector(socialTarget).classList.add("active");
     }
-  }
+  }*/
 
   // set image/cropper size
   actions.onchange = function (event) {
@@ -123,6 +136,7 @@ window.onload = function () {
       prepareImage.setAttribute('data-option', data.option);
       options.ready = function () {
         console.log('ready');
+        ga('send', 'event', 'image', 'image cropped',target.value);
       };
     }
 
@@ -142,6 +156,7 @@ window.onload = function () {
       options['top'] = 0;
       options['left'] = 0;
       options['autoCropArea'] = 1;
+      ga('send', 'event', 'image', 'image cropped',imageData.aspectRatio);
     }
 
     // Restart
@@ -192,6 +207,7 @@ window.onload = function () {
         var a = $("<a>").attr("href", result.toDataURL(cropedImageType)).attr("download", cropedImageName).appendTo("body");
         a[0].click();
         a.remove();
+        ga('send', 'event', 'image', 'image downloaded',data.option);
       }
     }
   };
