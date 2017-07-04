@@ -17,7 +17,7 @@ document.addEventListener("mouseover", setLink, true);
 // handles creating of the crop link
 function setLink(){
 	var target = event.target;
-	if (target instanceof HTMLImageElement){
+	if (target instanceof HTMLImageElement && target.naturalWidth >= 150){
 		// make sure no links are visible
 		var cropLink = document.getElementById("resizeMyPhoto");
 		var cropDiv = document.getElementById("resizeMyPhotoDiv");
@@ -28,20 +28,20 @@ function setLink(){
 			cropDiv.parentNode.replaceChild(fragment, cropDiv);
 		}
 		// create the link
-		else{
-			cropDiv = document.createElement("div");
-			cropDiv.setAttribute("id", "resizeMyPhotoDiv");
-			target.parentNode.appendChild(cropDiv);
-			cropDiv.appendChild(target);
-			cropLink = document.createElement("a");
-			cropLink.setAttribute("class", "resizeMyPhoto");
-			cropLink.setAttribute("id", "resizeMyPhoto");
-			cropLink.setAttribute("target", "_blank");
-			cropLink.innerHTML += "Crop/Resize";
-			cropLink.href = chrome.extension.getURL("index.html#") + target.src;
-			cropDiv.appendChild(cropLink);
-			ga('send', 'event', 'image', 'link created');
-		}
+		cropDiv = document.createElement("div");
+		cropDiv.setAttribute("id", "resizeMyPhotoDiv");
+		target.parentNode.appendChild(cropDiv);
+		cropDiv.appendChild(target);
+		cropLink = document.createElement("a");
+		cropLink.setAttribute("class", "resizeMyPhoto");
+		cropLink.setAttribute("id", "resizeMyPhoto");
+		cropLink.setAttribute("target", "_blank");
+		cropLink.innerHTML += "Crop/Resize";
+		cropLink.href = chrome.extension.getURL("index.html#") + target.src;
+    cropLink.style.marginTop = target.style.marginTop;
+		cropDiv.appendChild(cropLink);
+		ga('send', 'event', 'image', 'link created');
+		cropDiv.appendChild(cropLink);
 	}
 	else{
 		var cropLink = document.getElementById("resizeMyPhoto");
