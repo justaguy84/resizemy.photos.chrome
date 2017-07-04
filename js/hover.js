@@ -27,6 +27,7 @@ function setLink(){
 		cropLink.setAttribute("target", "_blank");
 		cropLink.innerHTML += "Crop/Resize";
 		cropLink.href = chrome.extension.getURL("index.html#") + target.src;
+		cropLink.style.marginTop = target.style.marginTop;
 		cropDiv.appendChild(cropLink);
 	}
 	else{
