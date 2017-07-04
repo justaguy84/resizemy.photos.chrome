@@ -53,6 +53,7 @@ window.onload = function () {
   if (imageUrl !==""){
     var image = container.getElementsByTagName('img').item(0);
     image.src = imageUrl;
+    ga('send', 'event', 'image', 'image loaded',imageUrl);
     var xhr = new XMLHttpRequest();
     xhr.open("GET", imageUrl, true);
     xhr.onreadystatechange = function() {
@@ -60,7 +61,6 @@ window.onload = function () {
         new Cropper(image, {
           ready: function () {
             cropper['replace'](imageUrl);
-            ga('send', 'event', 'image', 'image loaded',imageUrl);
           }
         });
       }
@@ -136,6 +136,7 @@ window.onload = function () {
       prepareImage.setAttribute('data-option', data.option);
       options.ready = function () {
         console.log('ready');
+        ga('send', 'event', 'image', 'image cropped',target.value);
       };
     }
 
@@ -155,12 +156,12 @@ window.onload = function () {
       options['top'] = 0;
       options['left'] = 0;
       options['autoCropArea'] = 1;
+      ga('send', 'event', 'image', 'image cropped',imageData.aspectRatio);
     }
 
     // Restart
     cropper.destroy();
     cropper = new Cropper(image, options);
-    ga('send', 'event', 'image', 'image cropped',imageData.aspectRatio);
   };
 
   // set download button
