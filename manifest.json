@@ -24,6 +24,7 @@
     "js/main.js",
     "css/general.css"
   ],
+  "content_security_policy": "script-src 'self' https://www.google-analytics.com; object-src 'self'",
   "permissions" : [
     "activeTab",
     "contextMenus",
