@@ -76,6 +76,7 @@ window.onload = function () {
   var originalImageURL = image.src;
 
   //socail tabs
+  /*
   actions.querySelector('#social-icons').onclick = function (event){
     var e = event || window.event;
     var target = e.target || e.srcElement;
@@ -85,7 +86,7 @@ window.onload = function () {
       $("#social-boxes >div.active").removeClass("active");
       boxes.querySelector(socialTarget).classList.add("active");
     }
-  }
+  }*/
 
   // set image/cropper size
   actions.onchange = function (event) {
