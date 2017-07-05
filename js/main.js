@@ -134,9 +134,9 @@ window.onload = function () {
       $('#custom-sizes input').removeClass('active');
       target.parentNode.classList.add("active");
       prepareImage.setAttribute('data-option', data.option);
+      ga('send', 'event', 'image', 'image cropped',data.option);
       options.ready = function () {
         console.log('ready');
-        ga('send', 'event', 'image', 'image cropped',target.value);
       };
     }
 
@@ -156,7 +156,7 @@ window.onload = function () {
       options['top'] = 0;
       options['left'] = 0;
       options['autoCropArea'] = 1;
-      ga('send', 'event', 'image', 'image cropped',imageData.aspectRatio);
+      ga('send', 'event', 'image', 'image cropped','{ "width": '+dataWidth.value+', "height": '+dataHeight.value+' }');
     }
 
     // Restart
@@ -182,12 +182,12 @@ window.onload = function () {
       method: target.getAttribute('data-method'),
       target: target.getAttribute('data-target'),
       option: target.getAttribute('data-option'),
-      secondOption: target.getAttribute('data-second-option')
+      secondOption: target.getAttribute('data-second-option'),
     };
 
     if (data.method === 'getCroppedCanvas') {
-      data.option = JSON.parse(data.option);
-      result = cropper[data.method](data.option, data.secondOption);
+      data.optionJson = JSON.parse(data.option);
+      result = cropper[data.method](data.optionJson, data.secondOption);
       if (result) {
         // prepare image and auto download
             
