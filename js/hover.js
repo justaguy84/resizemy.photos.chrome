@@ -11,8 +11,20 @@ ga('set', 'checkProtocolTask', function(){}); // Removes failing protocol check.
 ga('require', 'displayfeatures');
 ga('send', 'pageview', '/hover.html');
 
-// check elements mouse is hover
+// check elements mouse is hover - start extention as on
 document.addEventListener("mouseover", setLink, true);
+
+// wait for massage from background script
+chrome.runtime.onMessage.addListener(
+  function(response, sender, sendResponse) {
+    if (response.status == 'true'){
+    	// check elements mouse is hover
+		document.addEventListener("mouseover", setLink, true);
+	}
+	else{
+   		document.removeEventListener("mouseover", setLink, true);
+   	}
+});
 
 // handles creating of the crop link
 function setLink(){
@@ -38,7 +50,7 @@ function setLink(){
 		cropLink.setAttribute("target", "_blank");
 		cropLink.innerHTML += "Crop/Resize";
 		cropLink.href = chrome.extension.getURL("index.html#") + target.src;
-    cropLink.style.marginTop = target.style.marginTop;
+		cropLink.style.marginTop = target.style.marginTop;
 		cropDiv.appendChild(cropLink);
 		ga('send', 'event', 'image', 'link created');
 		cropDiv.appendChild(cropLink);
