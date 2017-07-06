@@ -17,10 +17,18 @@ window.onload = function () {
   var Cropper = window.Cropper;
   var container = document.querySelector('#img-container');
   var prepareImage = document.getElementById('prepareImage');
-  var actions = document.getElementById('editor');
+  var custom = document.getElementById('custom');
+  var preset = document.getElementById('preset');
   var download = document.getElementById('download');
   var dataHeight = document.getElementById('dataHeight');
   var dataWidth = document.getElementById('dataWidth');
+  var delay = (function(){
+    var timer = 0;
+    return function(callback, ms){
+      clearTimeout (timer);
+      timer = setTimeout(callback, ms);
+    };
+  })();
 
   //prepare cropper options
   var options = {
@@ -85,8 +93,6 @@ window.onload = function () {
   //create cropper
   var cropper = new Cropper(image, options);
   
-  var originalImageURL = image.src;
-
   //socail tabs
   /*
   actions.querySelector('#social-icons').onclick = function (event){
@@ -101,11 +107,55 @@ window.onload = function () {
   }*/
 
   // set image/cropper size
-  actions.onchange = function (event) {
+
+  // handle custom input:
+  custom.oninput = function (event){
     var e = event || window.event;
     var target = e.target || e.srcElement;
-    var isRadio;
-    var isText;
+    var data;
+    var imageData;
+    var croppertimer
+    data = {
+      method: target.getAttribute('data-method'),
+      target: target.getAttribute('data-target'),
+      option: target.getAttribute('data-option'),
+      secondOption: target.getAttribute('data-second-option')
+    };
+    if (!cropper || (target.type === undefined)) {
+      return;
+    }
+
+    if (target.tagName.toLowerCase() === 'label') {
+      target = target.querySelector('input');
+    }
+    if (target.id === 'dataWidth'){
+        dataHeight.value = Math.round(target.value * (image.naturalHeight/image.naturalWidth));
+      }
+    else if (target.id === 'dataHeight') {
+        dataWidth.value = Math.round(target.value * (image.naturalWidth/image.naturalHeight));
+    }
+
+    // Restart
+    delay(function(){
+      $('.box.btn.active').removeClass('active');
+      $('#custom-sizes input').addClass('active');
+      prepareImage.setAttribute('data-option', '{ "width": '+dataWidth.value+', "height": '+dataHeight.value+' }');
+      imageData = cropper['getImageData']();
+      options['aspectRatio'] = imageData.aspectRatio;
+      options['top'] = 0;
+      options['left'] = 0;
+      options['autoCropArea'] = 1;
+      ga('send', 'event', 'image', 'image cropped','{ "width": '+dataWidth.value+', "height": '+dataHeight.value+' }');
+      target.disabled = true;
+      cropper.destroy();
+      cropper = new Cropper(image, options);
+      target.disabled = false;
+    },1000);
+  }
+
+  preset.onchange = function (event) {
+    var e = event || window.event;
+    var target = e.target || e.srcElement;
     var data;
     var imageData;
 
@@ -123,42 +173,17 @@ window.onload = function () {
     if (target.tagName.toLowerCase() === 'label') {
       target = target.querySelector('input');
     }
-
-    isRadio = target.type === 'radio';
-    isText = target.type === 'text';
-
+    
     //set preset sizes
-    if (isRadio) {
-      options[target.name] = target.value;
-      $('.box.btn.active').removeClass('active');
-      $('#custom-sizes input').removeClass('active');
-      target.parentNode.classList.add("active");
-      prepareImage.setAttribute('data-option', data.option);
-      ga('send', 'event', 'image', 'image cropped',data.option);
-      options.ready = function () {
-        console.log('ready');
-      };
-    }
-
-    //set custom size
-    if(isText){
-      if (target.id === 'dataWidth'){
-        dataHeight.value = Math.round(target.value * (image.naturalHeight/image.naturalWidth));
-      }
-      else if (target.id === 'dataHeight') {
-        dataWidth.value = Math.round(target.value * (image.naturalWidth/image.naturalHeight));
-      }
-      $('.box.btn.active').removeClass('active');
-      $('#custom-sizes input').addClass('active');
-      prepareImage.setAttribute('data-option', '{ "width": '+dataWidth.value+', "height": '+dataHeight.value+' }');
-      imageData = cropper['getImageData']();
-      options['aspectRatio'] = imageData.aspectRatio;
-      options['top'] = 0;
-      options['left'] = 0;
-      options['autoCropArea'] = 1;
-      ga('send', 'event', 'image', 'image cropped','{ "width": '+dataWidth.value+', "height": '+dataHeight.value+' }');
-    }
-
+    options[target.name] = target.value;
+    $('.box.btn.active').removeClass('active');
+    $('#custom-sizes input').removeClass('active');
+    target.parentNode.classList.add("active");
+    prepareImage.setAttribute('data-option', data.option);
+    ga('send', 'event', 'image', 'image cropped',data.option);
+    options.ready = function () {
+      console.log('ready');
+    };
     // Restart
     cropper.destroy();
     cropper = new Cropper(image, options);
