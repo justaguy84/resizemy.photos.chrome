@@ -52,13 +52,19 @@ margin-left: 2%;
 .box.btn:hover{
   color: #56CCF2!important;
 }
-#custom-sizes input{
-  background-color: #504e51;
-  border: 0px none;
-  max-width: 80px;
-  padding: 10px;
-  margin-left: 5px;
+#custom-sizes input {
+    background-color: transparent;
+    border: 0px none;
+    max-width: 50px;
+    padding: 6px;
+    margin-left: 5px;
+    border-bottom: 1px solid #aaa;
+} 
+
+#custom-sizes, #presets {
+  padding-left: 20px;
 }
+
 #custom-sizes input.active{
   color: #56CCF2!important;
   border: 2px solid #56CCF2;
@@ -71,8 +77,9 @@ margin-left: 2%;
   text-align: center;
   position: relative;
   transition:all 0.2s ease;
-  min-width: 120px;
+  min-width: 100px;
   margin: 0 10px 10px 0;
+  border-radius: 2px;
 }
 
 .box:hover{
@@ -87,7 +94,7 @@ color:#333;
 }
 
 .box p{
- 
+ margin:10px;
 }
 
 a.link{
@@ -102,9 +109,7 @@ a.link{
   float: left;
 }
 
-.section-header{float:left;width: 100%;}
-
-.section-header h2{float:left;}
+.editor-section h2{float:left;margin-bottom: 20px;padding-bottom: 0;width:100%;}
 
 #prepareImage{
 background-color: #56CCF2;
@@ -122,8 +127,9 @@ margin-top: 15px;
 
 }
 
-#download{text-align: center;
-float:right;}
+#download{
+  text-align: center;
+}
 
 #info{
   font-size: 13px;
@@ -139,5 +145,24 @@ transition:all 0.1s ease;
 }
 
 button#prepareImage{
-transition:all 0.2s ease; 
+transition:all 0.2s ease;
+width: 100%; 
 }
+
+#custom-sizes span.px{
+  color:#777;
+}
+
+p.keep-ratio{
+font-size: 13px;  
+}
+
+p.width, p.height{
+  float:left;
+  margin-top: 0;
+}
+
+p.height{margin-left: 20px;}
+
+p.keep-ratio{clear: both;}
+

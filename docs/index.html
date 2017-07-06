@@ -26,18 +26,17 @@
         <div id="custom" class="editor-section">
           <h2>Custom size</h2>
           <div id="custom-sizes">
-            Width <input type="text" name="custom-width" id="dataWidth"> PX 
-            <a class="link">
-              <i class="fa fa-link" aria-hidden="true"></i>
-              <!-- <i class="fa fa-chain-broken" aria-hidden="true"></i> -->
-            </a>
-            Height <input type="text" name="custom-height" id="dataHeight"> PX
+            <p class="width">Width <input type="text" name="custom-width" id="dataWidth"> <span class="px">PX</span></p>
+            
+            <p class="height">Height <input type="text" name="custom-height" id="dataHeight"> <span class="px">PX</span></p>
+
+            <p class="keep-ratio"><input type="checkbox" name="keep-ratio" checked="" id="keep-ratio">Keep aspect ratio</p>
           </div>
         </div>
         <div id="preset" data-toggle="buttons">
           <div id="standard" class="editor-section">
             <h2>Or choose from common presets:</h2>
-            <div>
+            <div id="presets">
               
                 <label class="box btn active desktop" aria-pressed="true">
                   <input type="radio" class="sr-only" id="Desktop-ratio" name="aspectRatio" value="1.7777777777777777" data-option="{ &quot;width&quot;: 1920, &quot;height&quot;: 1080 }">
@@ -53,7 +52,11 @@
                           <input type="radio" class="sr-only" id="Thumbnail-ratio" name="aspectRatio" value="1" data-option="{ &quot;width&quot;: 200, &quot;height&quot;: 200 }">
                   <p>200 x 200</p>
                 </label>
-              
+              <label class="box btn facebook-cover" aria-pressed="true">
+                          <input type="radio" class="sr-only" id="facebook-cover" name="aspectRatio" value="2.628" data-option="{ &quot;width&quot;: 828, &quot;height&quot;: 315 }">
+                  <p>828 x 315</p>
+                </label>
+                
             </div>
 
             <!-- download button -->
