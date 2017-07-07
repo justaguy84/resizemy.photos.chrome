@@ -11,13 +11,21 @@ ga('set', 'checkProtocolTask', function(){}); // Removes failing protocol check.
 ga('require', 'displayfeatures');
 ga('send', 'pageview', '/hover.html');
 
-// check elements mouse is hover - start extention as on
-document.addEventListener("mouseover", setLink, true);
+// check extention status
+chrome.runtime.sendMessage({status: "getStatus"}, function(response) {
+	if (response.status == 'true'){
+    	// check elements mouse is hover
+		document.addEventListener("mouseover", setLink, true);
+	}
+	else{
+   		document.removeEventListener("mouseover", setLink, true);
+   	}
+});
 
 // wait for massage from background script
 chrome.runtime.onMessage.addListener(
-  function(response, sender, sendResponse) {
-    if (response.status == 'true'){
+  function(request, sender, sendResponse) {
+    if (request.status == 'true'){
     	// check elements mouse is hover
 		document.addEventListener("mouseover", setLink, true);
 	}
@@ -29,7 +37,7 @@ chrome.runtime.onMessage.addListener(
 // handles creating of the crop link
 function setLink(){
 	var target = event.target;
-	if (target instanceof HTMLImageElement && target.naturalWidth >= 150){
+	if (target instanceof HTMLImageElement && target.width >= 150){
 		// make sure no links are visible
 		var cropLink = document.getElementById("resizeMyPhoto");
 		var cropDiv = document.getElementById("resizeMyPhotoDiv");
