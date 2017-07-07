@@ -6,7 +6,10 @@
   "homepage_url": "http://resizemy.photos/",
   "author": "Guy Peri",
   "browser_action": {
-    "default_title": "resizemy.photos"
+    "default_title": "resizemy.photos",
+    "default_icon": {
+      "19": "icons/icon-active.png"
+    }
   },
   "icons" : {
     "16" : "icons/16x16.png",
