@@ -115,6 +115,8 @@ window.onload = function () {
     var data;
     var imageData;
     var croppertimer
+    var keepRatio = document.getElementById("keep-ratio").checked;
+
     data = {
       method: target.getAttribute('data-method'),
       target: target.getAttribute('data-target'),
@@ -128,11 +130,21 @@ window.onload = function () {
     if (target.tagName.toLowerCase() === 'label') {
       target = target.querySelector('input');
     }
-    if (target.id === 'dataWidth'){
-        dataHeight.value = Math.round(target.value * (image.naturalHeight/image.naturalWidth));
+    if (keepRatio){
+      if (target.id === 'dataWidth'){
+          dataHeight.value = Math.round(target.value * (image.naturalHeight/image.naturalWidth));
+        }
+      else if (target.id === 'dataHeight') {
+          dataWidth.value = Math.round(target.value * (image.naturalWidth/image.naturalHeight));
       }
-    else if (target.id === 'dataHeight') {
-        dataWidth.value = Math.round(target.value * (image.naturalWidth/image.naturalHeight));
+      imageData = cropper['getImageData']();
+      options['aspectRatio'] = imageData.aspectRatio;
+      options['top'] = 0;
+      options['left'] = 0;
+      options['autoCropArea'] = 1;
+    }
+    else{
+      options['aspectRatio'] = Math.round(dataWidth.value/dataHeight.value);
     }
 
     // Restart
@@ -140,11 +152,6 @@ window.onload = function () {
       $('.box.btn.active').removeClass('active');
       $('#custom-sizes input').addClass('active');
       prepareImage.setAttribute('data-option', '{ "width": '+dataWidth.value+', "height": '+dataHeight.value+' }');
-      imageData = cropper['getImageData']();
-      options['aspectRatio'] = imageData.aspectRatio;
-      options['top'] = 0;
-      options['left'] = 0;
-      options['autoCropArea'] = 1;
       ga('send', 'event', 'image', 'image cropped','{ "width": '+dataWidth.value+', "height": '+dataHeight.value+' }');
       target.disabled = true;
       cropper.destroy();
