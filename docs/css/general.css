@@ -59,6 +59,7 @@ margin-left: 2%;
     padding: 6px;
     margin-left: 5px;
     border-bottom: 1px solid #aaa;
+    color:#ffffff;
 } 
 
 #custom-sizes, #presets {
@@ -165,4 +166,3 @@ p.width, p.height{
 p.height{margin-left: 20px;}
 
 p.keep-ratio{clear: both;}
-
