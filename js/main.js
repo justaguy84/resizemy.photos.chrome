@@ -17,6 +17,7 @@ window.onload = function () {
   var Cropper = window.Cropper;
   var container = document.querySelector('#img-container');
   var prepareImage = document.getElementById('prepareImage');
+  var editor = document.getElementById('prepareImage');
   var custom = document.getElementById('custom');
   var preset = document.getElementById('preset');
   var download = document.getElementById('download');
@@ -106,8 +107,18 @@ window.onload = function () {
     }
   }*/
 
-  // set image/cropper size
+  // set active part
+  custom.onclick = function (event){
+    this.classList.add("active");
+    preset.classList.remove("active");
+  }
+  preset.onclick = function (event){
+    this.classList.add("active");
+    custom.classList.remove("active");
+  }
 
+  
+  // set image/cropper size
   // handle custom input:
   custom.oninput = function (event){
     var e = event || window.event;

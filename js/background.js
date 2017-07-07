@@ -1,4 +1,4 @@
-// set toggle of extention
+// set toggle of extention on browser action click and notify content script
 var status = true;
 chrome.browserAction.onClicked.addListener(function(tabs) {
   if (status == 'true'){
@@ -12,6 +12,26 @@ chrome.browserAction.onClicked.addListener(function(tabs) {
   chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
     chrome.tabs.sendMessage(tabs[0].id, {status: status});
   });
+});
+
+// check status on tab update and notify content script
+chrome.tabs.onActivated.addListener(function() {
+  if (status == 'true'){
+    chrome.browserAction.setIcon({path: "icons/icon-active.png"});
+  } 
+  else{
+    chrome.browserAction.setIcon({path: "icons/16x16.png"});
+  }
+  chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+    chrome.tabs.sendMessage(tabs[0].id, {status: status});
+  });
+});
+
+//send extention status on request
+chrome.runtime.onMessage.addListener(
+  function(request, sender, sendResponse) {
+    if (request.status == "getStatus")
+      sendResponse({status: status});
 });
 
 // Copyright (c) 2011 The Chromium Authors. All rights reserved.
