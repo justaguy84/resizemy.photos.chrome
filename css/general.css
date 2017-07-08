@@ -62,10 +62,6 @@ margin-left: 2%;
     color:#ffffff;
 } 
 
-#custom-sizes, #presets {
-  padding-left: 20px;
-}
-
 #custom-sizes input.active{
   color: #56CCF2!important;
   border: 2px solid #56CCF2;
@@ -79,7 +75,7 @@ margin-left: 2%;
   position: relative;
   transition:all 0.2s ease;
   min-width: 100px;
-  margin: 0 10px 10px 0;
+  margin: 5px;
   border-radius: 2px;
 }
 
@@ -96,6 +92,7 @@ color:#333;
 
 .box p{
  margin:10px;
+ font-size: 13px;
 }
 
 a.link{
@@ -124,12 +121,16 @@ float: right;
 margin-top: 15px;
 }
 
-#image-format{
-
+#image-format label{
+margin:5px;
 }
 
 #download{
   text-align: center;
+  float: left;
+  clear: both;
+  width: 100%;
+  margin-top: 20px;
 }
 
 #info{
@@ -167,3 +168,14 @@ p.height{margin-left: 20px;}
 
 p.keep-ratio{clear: both;}
 
+#custom, #preset{
+  opacity: 0.4;
+  padding: 10px 20px;
+  float: left;
+  border:1px solid #333333;
+}
+
+#custom.active, #preset.active{
+opacity: 1;
+border:1px solid #777777;
+}
