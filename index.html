@@ -26,10 +26,12 @@
         <div id="custom" class="editor-section">
           <h2>Custom size</h2>
           <div id="custom-sizes">
-            <p><span class="label">Width</span> <input type="text" name="custom-width" id="dataWidth"> <span class="px">PX</span> </p>
+            <p class="width"><span class="label">Width</span> <input type="text" name="custom-width" id="dataWidth"> <span class="px">PX</span> </p>
             
-            <p><span class="label">Height</span> <input type="text" name="custom-height" id="dataHeight"> <span class="px">PX</span></p>
+            <p class="height"><span class="label">Height</span> <input type="text" name="custom-height" id="dataHeight"> <span class="px">PX</span></p>
+            <p class="keep-ratio">
             <input type="checkbox" name="keep-ratio" checked="" id="keep-ratio">Keep aspect ratio
+            </p>
           </div>
         </div>
         <div id="preset" data-toggle="buttons" class="active">
@@ -55,6 +57,29 @@
                           <input type="radio" class="sr-only" id="facebook-cover" name="aspectRatio" value="2.628" data-option="{ &quot;width&quot;: 828, &quot;height&quot;: 315 }">
                   <p>828 x 315</p>
                 </label>
+
+
+
+
+                <label class="box btn" aria-pressed="true">
+                  <input type="radio" class="sr-only" id="1366-ratio" name="aspectRatio" value="1.7777777777777777" data-option="{ &quot;width&quot;: 1366, &quot;height&quot;: 768}">
+                  <p>1366 x 768</p>
+                </label>
+              
+                <label class="box btn" aria-pressed="true">
+                          <input type="radio" class="sr-only" id="1024-ratio" name="aspectRatio" value="1.333333333333" data-option="{ &quot;width&quot;: 1024, &quot;height&quot;: 768 }">
+                  <p>1024 x 768</p>
+                </label>
+              
+                <label class="box btn" aria-pressed="true">
+                          <input type="radio" class="sr-only" id="728-ratio" name="aspectRatio" value="8.08888888888" data-option="{ &quot;width&quot;: 728, &quot;height&quot;: 90 }">
+                  <p>728 x 90</p>
+                </label>
+              <label class="box btn" aria-pressed="true">
+                          <input type="radio" class="sr-only" id="400-cover" name="aspectRatio" value="1" data-option="{ &quot;width&quot;: 400, &quot;height&quot;: 400 }">
+                  <p>400 x 400</p>
+                </label>
+
                 
             </div>
 
@@ -91,6 +116,11 @@
         </div>
         
       </div>
+
+<div class="footer">
+    <a href="http://resizemy.photos/terms.html" target="_blank">Terms & Conditions  </a>
+</div>
+
     </div>
     <!-- Show the cropped image in modal -->
         <div class="hidden" id="getCroppedCanvasModal" role="dialog" aria-hidden="true" aria-labelledby="getCroppedCanvasTitle" tabindex="-1">
