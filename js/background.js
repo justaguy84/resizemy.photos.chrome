@@ -1,5 +1,7 @@
-// set toggle of extention on browser action click and notify content script
+// start extention as active
 var status = true;
+
+// set toggle of extention on browser action click and notify content script
 chrome.browserAction.onClicked.addListener(function(tabs) {
   if (status == 'true'){
     status = false;

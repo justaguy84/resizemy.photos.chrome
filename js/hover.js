@@ -16,6 +16,7 @@ chrome.runtime.sendMessage({status: "getStatus"}, function(response) {
 	if (response.status == 'true'){
     	// check elements mouse is hover
 		document.addEventListener("mouseover", setLink, true);
+		ga('send', 'event', 'extention', 'enabled');
 	}
 	else{
    		document.removeEventListener("mouseover", setLink, true);
