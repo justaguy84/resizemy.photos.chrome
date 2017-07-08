@@ -15,11 +15,11 @@ window.onload = function () {
 
   //set vars for common elements
   var Cropper = window.Cropper;
-  var container = document.querySelector('#img-container');
+  var container = document.getElementById('img-container');
   var prepareImage = document.getElementById('prepareImage');
-  var editor = document.getElementById('prepareImage');
   var custom = document.getElementById('custom');
   var preset = document.getElementById('preset');
+  var presetGroups = document.getElementById('preset-groups');
   var download = document.getElementById('download');
   var dataHeight = document.getElementById('dataHeight');
   var dataWidth = document.getElementById('dataWidth');
@@ -95,17 +95,18 @@ window.onload = function () {
   var cropper = new Cropper(image, options);
   
   //socail tabs
-  /*
-  actions.querySelector('#social-icons').onclick = function (event){
+  presetGroups.onclick = function (event){
     var e = event || window.event;
     var target = e.target || e.srcElement;
     if (target.type !== ''){
+      $("#preset-groups >li.active").removeClass("active");
       var socialTarget = '#'+target.parentElement.className;
-      var boxes = document.getElementById('social-boxes');
-      $("#social-boxes >div.active").removeClass("active");
-      boxes.querySelector(socialTarget).classList.add("active");
+      target.parentElement.classList.add("active");
+      
+      $("#standard >div.active").removeClass("active");
+      $(socialTarget).addClass("active");
     }
-  }*/
+  }
 
   // set active part
   custom.onclick = function (event){
