@@ -17,7 +17,6 @@ window.onload = function () {
   var Cropper = window.Cropper;
   var container = document.querySelector('#img-container');
   var prepareImage = document.getElementById('prepareImage');
-  var editor = document.getElementById('prepareImage');
   var custom = document.getElementById('custom');
   var preset = document.getElementById('preset');
   var download = document.getElementById('download');
