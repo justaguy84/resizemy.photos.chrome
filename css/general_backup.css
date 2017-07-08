@@ -1,0 +1,222 @@
+body
+{
+  background-color: #343235;
+  font-family: 'Lato', sans-serif;
+  font-size: 15px;
+  color:#ddd;
+}
+
+h1,h2,h3,h4,h5,h6{
+  color:#56CCF2;
+  font-weight: 700;
+}
+
+h1{font-size: 24px;}
+
+
+h2{font-size: 17px;}
+
+.hidden{display: none;}
+
+#wrapper{
+  padding: 30px;   
+  max-width: 1000px;
+}
+
+#editor{
+width:50%;
+float:left;
+}
+
+#the-image{
+width:48%;
+float:left;
+margin-left: 2%;
+}
+
+#img-container,#img-container img {
+  max-width: 100%; /* This rule is very important, please do not ignore this! */
+}
+.box{
+  background-color: #504e51;
+  padding-left: 0px!important;
+  padding-right: 0px!important;
+  border:2px solid #504e51;
+}
+.box.btn.active{
+  color: #56CCF2!important;
+  border: 2px solid #56CCF2;
+  /*outline: 5px auto -webkit-focus-ring-color!important;*/
+  /*outline-offset: -2px!important;*/
+}
+.box.btn:hover{
+  color: #56CCF2!important;
+}
+#custom-sizes input{
+  background-color: #504e51;
+  border: 0px none;
+  max-width: 80px;
+  padding: 10px;
+  margin-left: 5px;
+}
+#custom-sizes input.active{
+  color: #56CCF2!important;
+  border: 2px solid #56CCF2;
+  /*outline: 5px auto -webkit-focus-ring-color!important;*/
+  /*outline-offset: -2px!important;*/
+}
+
+.box{
+  display: table;
+  float:left;
+  text-align: center;
+  margin-right: 10px;
+  position: relative;
+  transition:all 0.2s ease; 
+}
+
+.box:hover{
+  cursor: pointer;
+  background-color: #56CCF2;
+  border-color: #56CCF2;
+  transition:all 0.2s ease; 
+}
+
+.box:hover p{
+color:#333;
+}
+
+.box p{
+ display: table-cell;
+ vertical-align: middle;
+}
+
+.box.desktop{
+  width:202px;
+  height: 126px;
+}
+.box.laptop{
+  width: 144px;
+  height: 90px;
+}
+.box.thumbnail{
+  width: 100px;
+  height: 100px;
+}
+
+a.link{
+  padding:10px;
+}
+
+.facebook .box.cover{
+  width:180px;
+  height:66px;
+}
+
+.facebook .box.profile{
+  width:90px;
+  height:90px;
+}
+
+.facebook .box.post{
+  width:130px;
+  height:130px;
+}
+
+
+/*4*/
+.linkedin .box.cover{
+  width:180px;
+  height:45px;
+}
+
+/*1*/
+.linkedin .box.profile{
+  width:80px;
+  height:80px;
+}
+
+/*3*/
+.linkedin .box.hero{
+  width:150px;
+  height:50px;
+}
+
+/*1.77*/
+.googlePlus .box.cover{
+  width:220px;
+  height:124px;
+}
+
+/*1*/
+.googlePlus .box.profile{
+  width:70px;
+  height:70px;
+}
+
+/*1.33*/
+.googlePlus .box.shared{
+  width:120px;
+  height:90px;
+}
+
+.editor-section{
+  clear:both;
+  width: 100%;
+  padding-bottom: 30px;
+  float: left;
+}
+
+#social ul li{
+  list-style: none;
+  float: left;
+  font-size:24px;
+  color:#888;
+  padding-right: 10px;
+
+}
+
+#social ul{float: right;padding-right: 20px;}
+
+.section-header{float:left;width: 100%;}
+
+.section-header h2{float:left;}
+
+#prepareImage{
+background-color: #56CCF2;
+font-size: 20px;
+border:none;
+border-radius: 2px;
+font-family: "Lato", sans-serif;
+padding:20px 40px;
+clear: both;
+float: right;
+margin-top: 15px;
+}
+
+#image-format{
+
+}
+
+#download{text-align: center;
+float:right;}
+
+#info{
+  font-size: 13px;
+  padding-top: 15px;
+}
+
+#info p{margin:0;padding-bottom: 5px;}
+
+#social-boxes div {display:none;}
+#social-boxes div.active,#social-boxes div.active .box{display: table!important;}
+
+button#prepareImage:hover {
+cursor:pointer;
+background-color: #10a0d1;
+transition:all 0.1s ease;
+}
+
+button#prepareImage{
+transition:all 0.2s ease; 
+}

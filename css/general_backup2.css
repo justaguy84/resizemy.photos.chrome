@@ -1,0 +1,153 @@
+body
+{
+  background-color: #343235;
+  font-family: 'Lato', sans-serif;
+  font-size: 15px;
+  color:#ddd;
+}
+
+h1,h2,h3,h4,h5,h6{
+  color:#56CCF2;
+  font-weight: 700;
+}
+
+h1{font-size: 24px;}
+
+
+h2{font-size: 17px;}
+
+.hidden{display: none;}
+
+#wrapper{
+  padding: 30px;   
+  max-width: 1000px;
+}
+
+#editor{
+width:50%;
+float:left;
+}
+
+#the-image{
+width:48%;
+float:left;
+margin-left: 2%;
+}
+
+#img-container,#img-container img {
+  max-width: 100%; /* This rule is very important, please do not ignore this! */
+}
+.box{
+  background-color: #504e51;
+  padding-left: 0px!important;
+  padding-right: 0px!important;
+  border:2px solid #504e51;
+}
+.box.btn.active{
+  color: #56CCF2!important;
+  border: 2px solid #56CCF2;
+  /*outline: 5px auto -webkit-focus-ring-color!important;*/
+  /*outline-offset: -2px!important;*/
+}
+.box.btn:hover{
+  color: #56CCF2!important;
+}
+#custom-sizes input{
+  background-color: #504e51;
+  border: 0px none;
+  max-width: 80px;
+  padding: 10px;
+  margin-left: 5px;
+}
+#custom-sizes input.active{
+  color: #56CCF2!important;
+  border: 2px solid #56CCF2;
+  /*outline: 5px auto -webkit-focus-ring-color!important;*/
+  /*outline-offset: -2px!important;*/
+}
+
+.box{
+  float:left;
+  text-align: center;
+  position: relative;
+  transition:all 0.2s ease;
+  min-width: 120px;
+  margin: 0 10px 10px 0;
+}
+
+.box:hover{
+  cursor: pointer;
+  background-color: #56CCF2;
+  border-color: #56CCF2;
+  transition:all 0.2s ease; 
+}
+
+.box:hover p{
+color:#333;
+}
+
+.box p{
+ 
+}
+
+a.link{
+  padding:10px;
+}
+
+
+.editor-section{
+  clear:both;
+  width: 100%;
+  padding-bottom: 30px;
+  float: left;
+}
+
+.section-header{float:left;width: 100%;}
+
+.section-header h2{float:left;}
+
+#prepareImage{
+background-color: #56CCF2;
+font-size: 20px;
+border:none;
+border-radius: 2px;
+font-family: "Lato", sans-serif;
+padding:20px 40px;
+clear: both;
+float: right;
+margin-top: 15px;
+}
+
+#image-format{
+
+}
+
+#download{text-align: center;
+float:right;}
+
+#info{
+  font-size: 13px;
+  padding-top: 15px;
+}
+
+#info p{margin:0;padding-bottom: 5px;}
+
+button#prepareImage:hover {
+cursor:pointer;
+background-color: #10a0d1;
+transition:all 0.1s ease;
+}
+
+button#prepareImage{
+transition:all 0.2s ease; 
+}
+
+#custom-sizes span.label{
+  min-width: 50px;
+  float: left;
+  line-height: 32px;
+}
+
+#custom-sizes span.px{
+  color:#777;
+}
