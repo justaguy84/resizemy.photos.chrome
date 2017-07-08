@@ -1,136 +1,174 @@
 <!doctype html>
 <html lang="en">
-  <head>
-  <meta charset="utf-8">
+
+<head>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Resize My Photos Test Page</title>
-    
-  <!-- Latest compiled and minified cropper CSS -->
-  <link rel="stylesheet" type="text/css" href="css/cropper.min.css">
-  
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
-  <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="css/general.css">
+    <!-- Latest compiled and minified cropper CSS -->
+    <link rel="stylesheet" type="text/css" href="css/cropper.min.css">
 
-  </head>
-  <body>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/general.css">
+
+</head>
+
+<body>
     <div id="wrapper">
-      
-      <div id="editor">
-        
-        <h1>Choose your image size</h1>
 
-        <div id="custom" class="editor-section">
-          <h2>Custom size</h2>
-          <div id="custom-sizes">
-            <p class="width"><span class="label">Width</span> <input type="text" name="custom-width" id="dataWidth"> <span class="px">PX</span> </p>
-            
-            <p class="height"><span class="label">Height</span> <input type="text" name="custom-height" id="dataHeight"> <span class="px">PX</span></p>
-            <p class="keep-ratio">
-            <input type="checkbox" name="keep-ratio" checked="" id="keep-ratio">Keep aspect ratio
-            </p>
-          </div>
-        </div>
-        <div id="preset" data-toggle="buttons" class="active">
-          <div id="standard" class="editor-section">
-            <h2>Or choose from common presets:</h2>
-            <div>
-              
-                <label class="box btn active desktop" aria-pressed="true">
-                  <input type="radio" class="sr-only" id="Desktop-ratio" name="aspectRatio" value="1.7777777777777777" data-option="{ &quot;width&quot;: 1920, &quot;height&quot;: 1080 }">
-                  <p>1920 x 1080</p>
-                </label>
-              
-                <label class="box btn laptop" aria-pressed="true">
-                          <input type="radio" class="sr-only" id="Laptop-ratio" name="aspectRatio" value="1.6" data-option="{ &quot;width&quot;: 1440, &quot;height&quot;: 900 }">
-                  <p>1440 x 900</p>
-                </label>
-              
-                <label class="box btn thumbnail" aria-pressed="true">
-                          <input type="radio" class="sr-only" id="Thumbnail-ratio" name="aspectRatio" value="1" data-option="{ &quot;width&quot;: 200, &quot;height&quot;: 200 }">
-                  <p>200 x 200</p>
-                </label>
-              <label class="box btn facebook-cover" aria-pressed="true">
-                          <input type="radio" class="sr-only" id="facebook-cover" name="aspectRatio" value="2.628" data-option="{ &quot;width&quot;: 828, &quot;height&quot;: 315 }">
-                  <p>828 x 315</p>
-                </label>
+        <div id="editor">
+
+            <h1>Choose your image size</h1>
+
+            <div id="custom" class="editor-section">
+                <h2>Custom size</h2>
+                <div class="clr"></div>
+                <div id="custom-sizes">
+                    <p class="width"><span class="label">Width</span>
+                        <input type="text" name="custom-width" id="dataWidth"> <span class="px">PX</span> </p>
+
+                    <p class="height"><span class="label">Height</span>
+                        <input type="text" name="custom-height" id="dataHeight"> <span class="px">PX</span>
+                    </p>
+                    <p class="keep-ratio">
+                        <input type="checkbox" name="keep-ratio" checked="" id="keep-ratio">Keep aspect ratio
+                    </p>
+                </div>
+            </div>
+            <div id="preset" data-toggle="buttons" class="active">
+                <div id="standard" class="editor-section">
+                    <h2>Or choose from common presets:</h2>
+
+                    <ul class="social">
+
+                        <li class="pn"><i class="fa fa-pinterest" aria-hidden="true"></i>
+                        </li>
+                        <li class="gplus"><i class="fa fa-google-plus-official" aria-hidden="true"></i>
+                        </li>
+                        <li class="in"><i class="fa fa-linkedin-square" aria-hidden="true"></i>
+                        </li>
+                        <li class="fb"><i class="fa fa-facebook-official" aria-hidden="true"></i>
+                        </li>
+                        <li class="lp active"><i class="fa fa-laptop" aria-hidden="true"></i>
+                        </li>
+
+                    </ul>
+
+                    <div class="clr"></div>
+
+                    <div class="laptop">
+
+                        <label class="box btn active" aria-pressed="true">
+                            <input type="radio" class="sr-only" id="Desktop-ratio" name="aspectRatio" value="1.7777777777777777" data-option="{ &quot;width&quot;: 1920, &quot;height&quot;: 1080 }">
+                            <p>1920 x 1080</p>
+                        </label>
+
+                        <label class="box btn" aria-pressed="true">
+                            <input type="radio" class="sr-only" id="Laptop-ratio" name="aspectRatio" value="1.6" data-option="{ &quot;width&quot;: 1440, &quot;height&quot;: 900 }">
+                            <p>1440 x 900</p>
+                        </label>
+
+                        <label class="box btn" aria-pressed="true">
+                            <input type="radio" class="sr-only" id="Thumbnail-ratio" name="aspectRatio" value="1" data-option="{ &quot;width&quot;: 200, &quot;height&quot;: 200 }">
+                            <p>200 x 200</p>
+                        </label>
+                        <label class="box btn" aria-pressed="true">
+                            <input type="radio" class="sr-only" id="facebook-cover" name="aspectRatio" value="2.628" data-option="{ &quot;width&quot;: 828, &quot;height&quot;: 315 }">
+                            <p>828 x 315</p>
+                        </label>
 
 
+                        <label class="box btn" aria-pressed="true">
+                            <input type="radio" class="sr-only" id="1366-ratio" name="aspectRatio" value="1.7777777777777777" data-option="{ &quot;width&quot;: 1366, &quot;height&quot;: 768}">
+                            <p>1366 x 768</p>
+                        </label>
+
+                        <label class="box btn" aria-pressed="true">
+                            <input type="radio" class="sr-only" id="1024-ratio" name="aspectRatio" value="1.333333333333" data-option="{ &quot;width&quot;: 1024, &quot;height&quot;: 768 }">
+                            <p>1024 x 768</p>
+                        </label>
+
+                        <label class="box btn" aria-pressed="true">
+                            <input type="radio" class="sr-only" id="728-ratio" name="aspectRatio" value="8.08888888888" data-option="{ &quot;width&quot;: 728, &quot;height&quot;: 90 }">
+                            <p>728 x 90</p>
+                        </label>
+                        <label class="box btn" aria-pressed="true">
+                            <input type="radio" class="sr-only" id="400-cover" name="aspectRatio" value="1" data-option="{ &quot;width&quot;: 400, &quot;height&quot;: 400 }">
+                            <p>400 x 400</p>
+                        </label>
 
 
-                <label class="box btn" aria-pressed="true">
-                  <input type="radio" class="sr-only" id="1366-ratio" name="aspectRatio" value="1.7777777777777777" data-option="{ &quot;width&quot;: 1366, &quot;height&quot;: 768}">
-                  <p>1366 x 768</p>
-                </label>
-              
-                <label class="box btn" aria-pressed="true">
-                          <input type="radio" class="sr-only" id="1024-ratio" name="aspectRatio" value="1.333333333333" data-option="{ &quot;width&quot;: 1024, &quot;height&quot;: 768 }">
-                  <p>1024 x 768</p>
-                </label>
-              
-                <label class="box btn" aria-pressed="true">
-                          <input type="radio" class="sr-only" id="728-ratio" name="aspectRatio" value="8.08888888888" data-option="{ &quot;width&quot;: 728, &quot;height&quot;: 90 }">
-                  <p>728 x 90</p>
-                </label>
-              <label class="box btn" aria-pressed="true">
-                          <input type="radio" class="sr-only" id="400-cover" name="aspectRatio" value="1" data-option="{ &quot;width&quot;: 400, &quot;height&quot;: 400 }">
-                  <p>400 x 400</p>
-                </label>
+                    </div>
 
-                
+                    <div class="facebook">
+                        
+                    </div>
+
+                    <div class="linkedin">
+                    
+                    </div>
+
+                    <div class="gplus">
+                        
+                    </div>
+
+                    <div class="pinterest">
+                        
+                    </div>
+
+                    <!-- download button -->
+                </div>
             </div>
 
-            <!-- download button -->
-          </div>
+            <div id="download">
+                <div id="image-format">
+                    <label class="btn active" aria-pressed="true">
+                        <input type="radio" id="download-jpg" name="fileType" value="image/jpeg" checked="checked"> JPG
+                    </label>
+                    <label class="btn active" aria-pressed="true">
+                        <input type="radio" id="download-png" name="fileType" value="image/png"> PNG
+                    </label>
+                </div>
+                <button id="prepareImage" class="btn btn-primary prepare-button" data-method="getCroppedCanvas" data-option="{ &quot;width&quot;: 1920, &quot;height&quot;: 1080 }">Download Image</button>
+            </div>
+
+            <!-- end of download button -->
         </div>
 
-        <div id="download">
-          <div id="image-format">
-          <label class="btn active" aria-pressed="true">
-            <input type="radio" id="download-jpg" name="fileType" value="image/jpeg" checked="checked">
-            JPG
-          </label>
-          <label class="btn active" aria-pressed="true">
-            <input type="radio" id="download-png" name="fileType" value="image/png">
-            PNG
-          </label>
-          </div>
-          <button id="prepareImage" class="btn btn-primary prepare-button" data-method="getCroppedCanvas" data-option="{ &quot;width&quot;: 1920, &quot;height&quot;: 1080 }">Download Image</button>
-        </div>
-
-<!-- end of download button -->
-          </div>
-          
-        </div>
-      </div>
-      <div id="the-image">
+    </div>
+    </div>
+    <div id="the-image">
         <div id="img-container">
-          <img id="image" src="loading.gif" class="img-responsive" alt="Image to crop">
+            <img id="image" src="loading.gif" class="img-responsive" alt="Image to crop">
         </div>
         <div id="info">
-          <p id="file-name"></p>
-          <p id="file-size"></p>
+            <p id="file-name"></p>
+            <p id="file-size"></p>
         </div>
-        
-      </div>
 
-<div class="footer">
-    <a href="http://resizemy.photos/terms.html" target="_blank">Terms & Conditions  </a>
-</div>
+    </div>
+
+    <div class="footer">
+        <a href="http://resizemy.photos/terms.html" target="_blank">Terms & Conditions  </a>
+    </div>
 
     </div>
     <!-- Show the cropped image in modal -->
-        <div class="hidden" id="getCroppedCanvasModal" role="dialog" aria-hidden="true" aria-labelledby="getCroppedCanvasTitle" tabindex="-1">
-          <div class="modal-body"></div>
-        </div><!-- /.modal -->
+    <div class="hidden" id="getCroppedCanvasModal" role="dialog" aria-hidden="true" aria-labelledby="getCroppedCanvasTitle" tabindex="-1">
+        <div class="modal-body"></div>
+    </div>
+    <!-- /.modal -->
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-      <script src="js/libs/jquery.min.js"></script>
+    <script src="js/libs/jquery.min.js"></script>
     <!-- Latest compiled and minified Cropper JavaScript -->
     <script type="text/javascript" src="js/libs/cropper.js"></script>
     <!-- Main javascript file -->
     <script type="text/javascript" src="js/main.js"></script>
-  </body>
+</body>
+
 </html>

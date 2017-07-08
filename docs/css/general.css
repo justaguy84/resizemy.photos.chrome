@@ -106,7 +106,11 @@ a.link{
   float: left;
 }
 
-.editor-section h2{float:left;margin-bottom: 20px;padding-bottom: 0;width:100%;}
+.editor-section h2{
+    float:left;
+    margin-bottom: 20px;
+    padding-bottom: 0;
+}
 
 #prepareImage{
 background-color: #56CCF2;
@@ -150,6 +154,12 @@ transition:all 0.2s ease;
 width: 100%; 
 }
 
+#custom{
+-moz-box-sizing: border-box;
+-webkit-box-sizing: border-box;
+box-sizing: border-box;
+}
+
 #custom-sizes span.px{
   color:#777;
 }
@@ -189,3 +199,15 @@ border:1px solid #777777;
 }
 
 .footer a{color:#56CCF2;padding: 30px 0;float: left;text-decoration: none;font-size: 12px;}
+
+ul.social{
+  float:right;
+  margin:8px 0 0 0;
+  padding: 0;
+}
+
+ul.social li{float:right;list-style:none;padding:5px;font-size: 20px;color:#777;}
+
+ul.social li.active{color:#56CCF2;}
+
+.clr{clear: both;}
