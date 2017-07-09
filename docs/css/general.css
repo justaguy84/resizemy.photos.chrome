@@ -193,6 +193,14 @@ opacity: 1;
 border:1px solid #777777;
 }
 
+#standard >div.active {
+  display: block;
+}
+
+#standard >div {
+  display: none;
+}
+
 .footer{
   float:left;
   clear: both;
