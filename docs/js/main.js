@@ -33,6 +33,22 @@ window.onload = function () {
     };
   })();
 
+  //usful functions
+  function updateImageInfo(name,w,h){
+    fileName.innerHTML = name;
+    fileSize.innerHTML = 'Original size: ' + w + 'x' + h;
+  }
+  function  updateWHInputs(w,h){
+    dataHeight.value = Math.round(h);
+    dataWidth.value = Math.round(w);
+  }
+  function removeActive(object){
+    object.classList.remove("active");
+  }
+  function addActive(object){
+    object.classList.add("active");
+  }
+
   //prepare cropper options
   var options = {
     aspectRatio: 16 / 9,
@@ -78,15 +94,6 @@ window.onload = function () {
     }
     xhr.send();
   }
-
-  function updateImageInfo(name,w,h){
-    fileName.innerHTML = name;
-    fileSize.innerHTML = 'Original size: ' + w + 'x' + h;
-  }
-  function  updateWHInputs(w,h){
-    dataHeight.value = Math.round(h);
-    dataWidth.value = Math.round(w);
-  }
   image.onload = function(){
     var imageName = image.getAttribute('src');
     var imageWidth = image.naturalWidth;
@@ -100,28 +107,27 @@ window.onload = function () {
   //create cropper
   var cropper = new Cropper(image, options);
   
-  //socail tabs
+  //preset tabs
   presetGroups.onclick = function (event){
     var e = event || window.event;
     var target = e.target || e.srcElement;
     if (target.type !== ''){
-      $("#preset-groups >li.active").removeClass("active");
+      removeActive($("#preset-groups >li.active")[0]);
       var socialTarget = '#'+target.parentElement.className;
-      target.parentElement.classList.add("active");
-      
-      $("#standard >div.active").removeClass("active");
-      $(socialTarget).addClass("active");
+      addActive(target.parentElement);
+      removeActive($("#standard >div.active")[0]);
+      addActive($(socialTarget)[0]);
     }
   }
 
   // set active part
   custom.onclick = function (event){
-    this.classList.add("active");
-    preset.classList.remove("active");
+    addActive(this);
+    removeActive(preset);
   }
   preset.onclick = function (event){
-    this.classList.add("active");
-    custom.classList.remove("active");
+    addActive(this);
+    removeActive(custom);
   }
 
   
@@ -167,8 +173,8 @@ window.onload = function () {
 
     // Restart
     delay(function(){
-      $('.box.btn.active').removeClass('active');
-      $('#custom-sizes input').addClass('active');
+      addActive($('#custom-sizes input')[0]);
+      removeActive($('.box.btn.active')[0]);
       prepareImage.setAttribute('data-option', '{ "width": '+dataWidth.value+', "height": '+dataHeight.value+' }');
       ga('send', 'event', 'image', 'image cropped','{ "width": '+dataWidth.value+', "height": '+dataHeight.value+' }');
       target.disabled = true;
@@ -201,9 +207,9 @@ window.onload = function () {
     
     //set preset sizes
     options[target.name] = target.value;
-    $('.box.btn.active').removeClass('active');
-    $('#custom-sizes input').removeClass('active');
-    target.parentNode.classList.add("active");
+    addActive(target.parentNode);
+    removeActive($('#custom-sizes input')[0]);
+    removeActive($('.box.btn.active')[0]);
     prepareImage.setAttribute('data-option', data.option);
     ga('send', 'event', 'image', 'image cropped',data.option);
     options.ready = function () {
