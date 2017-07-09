@@ -43,10 +43,14 @@ window.onload = function () {
     dataWidth.value = Math.round(w);
   }
   function removeActive(object){
-    object.classList.remove("active");
+    if (object){
+      object.classList.remove("active");
+    }
   }
   function addActive(object){
-    object.classList.add("active");
+    if (object) {
+      object.classList.add("active");
+    }
   }
 
   //prepare cropper options
