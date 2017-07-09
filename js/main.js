@@ -23,6 +23,8 @@ window.onload = function () {
   var download = document.getElementById('download');
   var dataHeight = document.getElementById('dataHeight');
   var dataWidth = document.getElementById('dataWidth');
+  var fileName = document.getElementById('file-name');
+  var fileSize = document.getElementById('file-size');
   var delay = (function(){
     var timer = 0;
     return function(callback, ms){
@@ -59,8 +61,8 @@ window.onload = function () {
 
   // prepare image
   var imageUrl = window.location.hash.substring(1);
-  if (imageUrl !==""){
-    var image = container.getElementsByTagName('img').item(0);
+  var image = container.getElementsByTagName('img').item(0);
+  if (imageUrl){
     image.src = imageUrl;
     ga('send', 'event', 'image', 'image loaded',imageUrl);
     var xhr = new XMLHttpRequest();
@@ -76,8 +78,14 @@ window.onload = function () {
     }
     xhr.send();
   }
-  else{
-    var image = container.getElementsByTagName('img').item(0);
+
+  function updateImageInfo(name,w,h){
+    fileName.innerHTML = name;
+    fileSize.innerHTML = 'Original size: ' + w + 'x' + h;
+  }
+  function  updateWHInputs(w,h){
+    dataHeight.value = Math.round(h);
+    dataWidth.value = Math.round(w);
   }
   image.onload = function(){
     var imageName = image.getAttribute('src');
@@ -85,10 +93,8 @@ window.onload = function () {
     var imageHeight = image.naturalHeight;
 
     // preset info on page
-    document.getElementById('file-name').innerHTML = imageName;
-    document.getElementById('file-size').innerHTML = 'Original size: ' + imageWidth + 'x' + imageHeight;
-    dataHeight.value = Math.round(imageHeight);
-    dataWidth.value = Math.round(imageWidth);
+    updateImageInfo(imageName,imageWidth,imageHeight);
+    updateWHInputs(imageWidth,imageHeight);
   }
 
   //create cropper

@@ -61,14 +61,13 @@ function setLink(){
 		cropLink.href = chrome.extension.getURL("index.html#") + target.src;
 		cropLink.style.marginTop = target.style.marginTop;
 		cropDiv.appendChild(cropLink);
-		ga('send', 'event', 'image', 'link created');
 		cropDiv.appendChild(cropLink);
 	}
 	else{
 		var cropLink = document.getElementById("resizeMyPhoto");
 		var cropDiv = document.getElementById("resizeMyPhotoDiv");
 		// make sure mouse is not on link
-		if(target == cropLink || cropLink == null){
+		if(target === cropLink || cropLink === null){
 			return;
 		}
 		// remove the link
