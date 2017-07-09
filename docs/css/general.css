@@ -193,8 +193,8 @@ opacity: 1;
 border:1px solid #777777;
 }
 
-#standard >div.active {
-  display: block;
+#standard > div.active {
+  display: inline-block;
 }
 
 #standard >div {
@@ -219,3 +219,7 @@ ul.social li{float:right;list-style:none;padding:5px;font-size: 20px;color:#777;
 ul.social li.active{color:#56CCF2;}
 
 .clr{clear: both;}
+
+.box p span{
+  font-size: 11px;
+}
