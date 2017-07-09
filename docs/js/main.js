@@ -206,18 +206,16 @@ window.onload = function () {
     }
     
     //set preset sizes
-    options[target.name] = target.value;
+    removeActive($('.box.btn.active')[0]);
     addActive(target.parentNode);
     removeActive($('#custom-sizes input')[0]);
-    removeActive($('.box.btn.active')[0]);
     prepareImage.setAttribute('data-option', data.option);
     ga('send', 'event', 'image', 'image cropped',data.option);
     options.ready = function () {
       console.log('ready');
     };
     // Restart
-    cropper.destroy();
-    cropper = new Cropper(image, options);
+    cropper.setAspectRatio(target.value);
   };
 
   // set download button
