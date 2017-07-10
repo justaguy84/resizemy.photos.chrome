@@ -140,17 +140,10 @@ window.onload = function () {
   custom.oninput = function (event){
     var e = event || window.event;
     var target = e.target || e.srcElement;
-    var data;
     var imageData;
     var croppertimer
     var keepRatio = document.getElementById("keep-ratio").checked;
 
-    data = {
-      method: target.getAttribute('data-method'),
-      target: target.getAttribute('data-target'),
-      option: target.getAttribute('data-option'),
-      secondOption: target.getAttribute('data-second-option')
-    };
     if (!cropper || (target.type === undefined)) {
       return;
     }
@@ -180,6 +173,7 @@ window.onload = function () {
       addClass($('#custom-sizes input')[0],"active-item");
       removeClass($('.box.btn.active')[0],"active-item");
       prepareImage.setAttribute('data-option', '{ "width": '+dataWidth.value+', "height": '+dataHeight.value+' }');
+      prepareImage.setAttribute('data-file-name','custom-'+dataWidth.value+'x'+dataHeight.value);
       ga('send', 'event', 'image', 'image cropped','{ "width": '+dataWidth.value+', "height": '+dataHeight.value+' }');
       target.disabled = true;
       cropper.destroy();
@@ -195,10 +189,7 @@ window.onload = function () {
     var imageData;
 
     data = {
-      method: target.getAttribute('data-method'),
-      target: target.getAttribute('data-target'),
-      option: target.getAttribute('data-option'),
-      secondOption: target.getAttribute('data-second-option')
+      option: target.getAttribute('data-option')
     };
 
     if (!cropper || (target.type === undefined)) {
@@ -210,10 +201,12 @@ window.onload = function () {
     }
     
     //set preset sizes
+    data.optionJson = JSON.parse(data.option);
     removeClass($('.box.btn.active-item')[0],"active-item");
     addClass(target.parentNode,"active-item");
     removeClass($('#custom-sizes input')[0],"active-item");
     prepareImage.setAttribute('data-option', data.option);
+    prepareImage.setAttribute('data-file-name',target.id+'-'+data.optionJson.width+'x'+data.optionJson.height);
     ga('send', 'event', 'image', 'image cropped',data.option);
     options.ready = function () {
       console.log('ready');
@@ -229,8 +222,8 @@ window.onload = function () {
     var result;
     var input;
     var data;
-    var cropedImageName = "cropped.";
-    var cropedImageType;
+    var croppedImageName;
+    var croppedImageType;
 
     if (!cropper) {
       return;
@@ -238,24 +231,24 @@ window.onload = function () {
 
     data = {
       method: target.getAttribute('data-method'),
-      target: target.getAttribute('data-target'),
       option: target.getAttribute('data-option'),
-      secondOption: target.getAttribute('data-second-option'),
+      fileName: target.getAttribute('data-file-name'),
     };
 
     if (data.method === 'getCroppedCanvas') {
       data.optionJson = JSON.parse(data.option);
-      result = cropper[data.method](data.optionJson, data.secondOption);
+      croppedImageName = data.fileName;
+      result = cropper[data.method](data.optionJson);
       if (result) {
         // prepare image and auto download
             
         // get filetype and set download name
         cropedImageType = $('input[name="fileType"]:checked').val();
         if (cropedImageType === 'image/jpeg'){
-          cropedImageName = cropedImageName + 'jpg';
+          cropedImageName = cropedImageName + '.jpg';
         }
         else{
-          cropedImageName = cropedImageName + 'png';
+          cropedImageName = cropedImageName + '.png';
         }
 
        //draw image
