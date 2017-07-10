@@ -142,6 +142,7 @@ window.onload = function () {
     var target = e.target || e.srcElement;
     var imageData;
     var croppertimer
+    var fileName = "custom-"
     var keepRatio = document.getElementById("keep-ratio").checked;
 
     if (!cropper || (target.type === undefined)) {
@@ -152,6 +153,7 @@ window.onload = function () {
       target = target.querySelector('input');
     }
     if (keepRatio){
+      fileName = fileName + 'resize-';
       if (target.id === 'dataWidth'){
           dataHeight.value = Math.round(target.value * (image.naturalHeight/image.naturalWidth));
         }
@@ -165,6 +167,7 @@ window.onload = function () {
       options['autoCropArea'] = 1;
     }
     else{
+      fileName = fileName + 'crop-';
       options['aspectRatio'] = Math.round(dataWidth.value/dataHeight.value);
     }
 
