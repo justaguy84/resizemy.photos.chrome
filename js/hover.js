@@ -36,7 +36,7 @@ function setLinkVisibility(shouldShow) {
   if (shouldShow) {
     var pos = getPosition(cropperExtension.curImage);
     link.style.top = (pos.top + 10) + "px";
-    link.style.left = (pos.left + 10) + "px"
+    link.style.right = (pos.right + 10) + "px"
     link.href = chrome.extension.getURL("index.html#") + cropperExtension.curImage.src; 
   }
   link.style.display = displayValue;
@@ -45,8 +45,8 @@ function getPosition(el) {
   var bodyRect = document.body.getBoundingClientRect(),
     elemRect = el.getBoundingClientRect(),
     top   = elemRect.top - bodyRect.top,
-    left  = elemRect.left - bodyRect.left;
-  return {left:left, top:top};
+    right  = bodyRect.right - elemRect.right;
+  return {right:right, top:top};
 }
 function setLink(e){
 	if (e.srcElement.nodeName === "IMG" && e.srcElement !== cropperExtension.curImage && e.srcElement.width >= 150) {
