@@ -3,10 +3,12 @@ iconURL = chrome.extension.getURL("/icons/button-icon.png");
 // check extention status
 chrome.runtime.sendMessage({status: "getStatus"}, function(response) {
 	if (response.status == 'true'){
+		createLink();
     	// check elements mouse is hover
 		document.addEventListener("mousemove", setLink, true);
 	}
 	else{
+		document.body.removeChild(cropperExtension.link);
    		document.removeEventListener("mousemove", setLink, true);
    	}
 });
@@ -15,10 +17,12 @@ chrome.runtime.sendMessage({status: "getStatus"}, function(response) {
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
     if (request.status == 'true'){
+    	createLink();
     	// check elements mouse is hover
 		document.addEventListener("mousemove", setLink, true);
 	}
 	else{
+		document.body.removeChild(cropperExtension.link);
    		document.removeEventListener("mousemove", setLink, true);
    	}
 });
@@ -32,7 +36,6 @@ function createLink() {
   document.body.appendChild (link);
   cropperExtension.link = link;
 };
-createLink();
 function setLinkVisibility(shouldShow) {
   var link = cropperExtension.link;
   var displayValue = shouldShow ? "block" : "none";
