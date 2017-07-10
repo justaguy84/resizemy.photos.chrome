@@ -168,7 +168,7 @@ window.onload = function () {
     }
     else{
       fileName = fileName + 'crop-';
-      options['aspectRatio'] = Math.round(dataWidth.value/dataHeight.value);
+      options['aspectRatio'] = dataWidth.value/dataHeight.value;
     }
 
     // Restart
