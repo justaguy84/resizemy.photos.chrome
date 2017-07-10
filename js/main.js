@@ -261,7 +261,7 @@ window.onload = function () {
         var a = $("<a>").attr("href", result.toDataURL(croppedImageType)).attr("download", croppedImageName).appendTo("body");
         a[0].click();
         a.remove();
-        ga('send', 'event', 'image', 'image downloaded',data.option);
+        ga('send', 'event', 'image', 'image downloaded',croppedImageName);
       }
     }
   };
