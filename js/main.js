@@ -176,7 +176,7 @@ window.onload = function () {
       addClass($('#custom-sizes input')[0],"active-item");
       removeClass($('.box.btn.active')[0],"active-item");
       prepareImage.setAttribute('data-option', '{ "width": '+dataWidth.value+', "height": '+dataHeight.value+' }');
-      prepareImage.setAttribute('data-file-name','custom-'+dataWidth.value+'x'+dataHeight.value);
+      prepareImage.setAttribute('data-file-name',fileName+dataWidth.value+'x'+dataHeight.value);
       ga('send', 'event', 'image', 'image cropped','{ "width": '+dataWidth.value+', "height": '+dataHeight.value+' }');
       target.disabled = true;
       cropper.destroy();
