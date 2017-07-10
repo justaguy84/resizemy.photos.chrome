@@ -14,7 +14,7 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/general.min.css">
+    <link rel="stylesheet" type="text/css" href="css/general.css">
 
 </head>
 
@@ -64,7 +64,7 @@
                     <div class="laptop active-preset-category" id="lp">
 
                         <label class="box btn active-item" aria-pressed="true">
-                            <input type="radio" class="sr-only" id="desktop" name="aspectRatio" value="1.7777777777777777" data-option="{ &quot;width&quot;: 1920, &quot;height&quot;: 1080 }" data-file-name="desktop-1920x1080">
+                            <input type="radio" class="sr-only" id="desktop" name="aspectRatio" value="1.7777777777777777" data-option="{ &quot;width&quot;: 1920, &quot;height&quot;: 1080 }">
                             <p>1920 x 1080
                             <br><span>Desktop</span>
                             </p>
@@ -168,7 +168,7 @@
                         <input type="radio" id="download-png" name="fileType" value="image/png"> PNG
                     </label>
                 </div>
-                <button id="prepareImage" class="btn btn-primary prepare-button" data-method="getCroppedCanvas" data-option="{ &quot;width&quot;: 1920, &quot;height&quot;: 1080 }">Download Image</button>
+                <button id="prepareImage" class="btn btn-primary prepare-button" data-method="getCroppedCanvas" data-option="{ &quot;width&quot;: 1920, &quot;height&quot;: 1080 }" data-file-name="desktop-1920x1080">Download Image</button>
             </div>
 
             <!-- end of download button -->
@@ -200,9 +200,9 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js/libs/jquery.min.js"></script>
     <!-- Latest compiled and minified Cropper JavaScript -->
-    <script type="text/javascript" src="js/libs/cropper.min.js"></script>
+    <script type="text/javascript" src="js/libs/cropper.js"></script>
     <!-- Main javascript file -->
-    <script type="text/javascript" src="js/main.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
 </body>
 
 </html>

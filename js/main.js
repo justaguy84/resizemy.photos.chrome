@@ -243,19 +243,19 @@ window.onload = function () {
         // prepare image and auto download
             
         // get filetype and set download name
-        cropedImageType = $('input[name="fileType"]:checked').val();
-        if (cropedImageType === 'image/jpeg'){
-          cropedImageName = cropedImageName + '.jpg';
+        croppedImageType = $('input[name="fileType"]:checked').val();
+        if (croppedImageType === 'image/jpeg'){
+          croppedImageName = croppedImageName + '.jpg';
         }
         else{
-          cropedImageName = cropedImageName + '.png';
+          croppedImageName = croppedImageName + '.png';
         }
 
        //draw image
         //$('#getCroppedCanvasModal').find('.modal-body').html(result);
 
         // start auto download of image
-        var a = $("<a>").attr("href", result.toDataURL(cropedImageType)).attr("download", cropedImageName).appendTo("body");
+        var a = $("<a>").attr("href", result.toDataURL(croppedImageType)).attr("download", croppedImageName).appendTo("body");
         a[0].click();
         a.remove();
         ga('send', 'event', 'image', 'image downloaded',data.option);
