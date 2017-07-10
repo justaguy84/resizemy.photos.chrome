@@ -42,14 +42,14 @@ window.onload = function () {
     dataHeight.value = Math.round(h);
     dataWidth.value = Math.round(w);
   }
-  function removeActive(object){
+  function removeClass(object,css){
     if (object){
-      object.classList.remove("active");
+      object.classList.remove(css);
     }
   }
-  function addActive(object){
+  function addClass(object,css){
     if (object) {
-      object.classList.add("active");
+      object.classList.add(css);
     }
   }
 
@@ -116,22 +116,22 @@ window.onload = function () {
     var e = event || window.event;
     var target = e.target || e.srcElement;
     if (target.type !== ''){
-      removeActive($("#preset-groups >li.active")[0]);
+      removeClass($("#preset-groups >li.active-preset-category")[0],"active-preset-category");
       var socialTarget = '#'+target.parentElement.className;
-      addActive(target.parentElement);
-      removeActive($("#standard >div.active")[0]);
-      addActive($(socialTarget)[0]);
+      addClass(target.parentElement,"active-preset-category");
+      removeClass($("#standard >div.active-preset-category")[0],"active-preset-category");
+      addClass($(socialTarget)[0],"active-preset-category");
     }
   }
 
   // set active part
   custom.onclick = function (event){
-    addActive(this);
-    removeActive(preset);
+    addClass(this,"active-section");
+    removeClass(preset,"active-section");
   }
   preset.onclick = function (event){
-    addActive(this);
-    removeActive(custom);
+    addClass(this,"active-section");
+    removeClass(custom,"active-section");
   }
 
   
@@ -177,8 +177,8 @@ window.onload = function () {
 
     // Restart
     delay(function(){
-      addActive($('#custom-sizes input')[0]);
-      removeActive($('.box.btn.active')[0]);
+      addClass($('#custom-sizes input')[0],"active-item");
+      removeClass($('.box.btn.active')[0],"active-item");
       prepareImage.setAttribute('data-option', '{ "width": '+dataWidth.value+', "height": '+dataHeight.value+' }');
       ga('send', 'event', 'image', 'image cropped','{ "width": '+dataWidth.value+', "height": '+dataHeight.value+' }');
       target.disabled = true;
@@ -210,9 +210,9 @@ window.onload = function () {
     }
     
     //set preset sizes
-    removeActive($('.box.btn.active')[0]);
-    addActive(target.parentNode);
-    removeActive($('#custom-sizes input')[0]);
+    removeClass($('.box.btn.active-item')[0],"active-item");
+    addClass(target.parentNode,"active-item");
+    removeClass($('#custom-sizes input')[0],"active-item");
     prepareImage.setAttribute('data-option', data.option);
     ga('send', 'event', 'image', 'image cropped',data.option);
     options.ready = function () {
