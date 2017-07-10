@@ -4,10 +4,10 @@ iconURL = chrome.extension.getURL("/icons/button-icon.png");
 chrome.runtime.sendMessage({status: "getStatus"}, function(response) {
 	if (response.status == 'true'){
     	// check elements mouse is hover
-		document.addEventListener("mouseover", setLink, true);
+		document.addEventListener("mousemove", setLink, true);
 	}
 	else{
-   		document.removeEventListener("mouseover", setLink, true);
+   		document.removeEventListener("mousemove", setLink, true);
    	}
 });
 
@@ -16,13 +16,55 @@ chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
     if (request.status == 'true'){
     	// check elements mouse is hover
-		document.addEventListener("mouseover", setLink, true);
+		document.addEventListener("mousemove", setLink, true);
 	}
 	else{
-   		document.removeEventListener("mouseover", setLink, true);
+   		document.removeEventListener("mousemove", setLink, true);
    	}
 });
 
+var cropperExtension = {};
+function createLink() {
+  var link = document.createElement("a");
+  link.innerHTML += "Crop/Resize";
+  link.setAttribute("id","resizeMyPhoto");
+  link.setAttribute("target", "_blank");
+  document.body.appendChild (link);
+  cropperExtension.link = link;
+};
+createLink();
+function setLinkVisibility(shouldShow) {
+  var link = cropperExtension.link;
+  var displayValue = shouldShow ? "block" : "none";
+  if (shouldShow) {
+    var pos = getPosition(cropperExtension.curImage);
+    link.style.top = (pos.top + 10) + "px";
+    link.style.left = (pos.left + 10) + "px"
+    link.href = chrome.extension.getURL("index.html#") + cropperExtension.curImage.src; 
+    console.log("showing link",pos);
+  }
+  link.style.display = displayValue;
+}
+function getPosition(el) {
+  var bodyRect = document.body.getBoundingClientRect(),
+    elemRect = el.getBoundingClientRect(),
+    top   = elemRect.top - bodyRect.top,
+    left  = elemRect.left - bodyRect.left;
+  return {left:left, top:top};
+}
+function setLink(e){
+	if (e.srcElement.nodeName === "IMG" && e.srcElement !== cropperExtension.curImage && e.srcElement.width >= 150) {
+    	console.log("new image hover", e.srcElement);
+	    cropperExtension.curImage = e.srcElement;
+    	setLinkVisibility (true);
+  	} else if (e.srcElement.nodeName !== "IMG" && e.srcElement !== cropperExtension.link) {
+    	//we are off the image and off the link, hide the link
+	    console.log("out of image")
+    	cropperExtension.curImage = null;
+    	setLinkVisibility(false);
+  	}
+}
+/*
 // handles creating of the crop link
 function setLink(){
 	var target = event.target;
@@ -66,4 +108,4 @@ function setLink(){
 			cropDiv.parentNode.replaceChild(fragment, cropDiv);
 		}
 	}
-}
+}*/
