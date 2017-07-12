@@ -24,7 +24,8 @@ chrome.runtime.onMessage.addListener(
 var cropperExtension = {};
 function createLink() {
   var link = document.createElement("a");
-  link.innerHTML += "Crop/Resize";
+  var iconURL = chrome.extension.getURL("/icons/button-icon.png");
+  link.innerHTML += "<img src='"+iconURL+"'>";
   link.setAttribute("id","resizeMyPhoto");
   link.setAttribute("target", "_blank");
   document.body.appendChild (link);

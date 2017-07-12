@@ -1,16 +1,11 @@
 #resizeMyPhoto{
-	background-color:#56CCF2;
-	color:#333333;
 	border-radius:2px;
-	font-size:12px;
-	padding:6px 10px;
 	position:absolute;
 	text-decoration: none;
-	font-weight: bold;
 	-webkit-box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.75);
 	-moz-box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.75);
 	box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.75);
-	line-height: 20px;
 	display:none;
 	z-index:99999999;
+	height: 32px;
 }
