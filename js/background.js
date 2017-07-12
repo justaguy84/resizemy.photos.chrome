@@ -5,11 +5,11 @@ var status = true;
 chrome.browserAction.onClicked.addListener(function(tabs) {
   if (status == 'true'){
     status = false;
-    chrome.browserAction.setIcon({path: "icons/16x16.png"});
+    chrome.browserAction.setIcon({path: "icons/128-off.png"});
   } 
   else{
     status = true;
-    chrome.browserAction.setIcon({path: "icons/icon-active.png"});
+    chrome.browserAction.setIcon({path: "icons/128-on.png"});
   }
   chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
     chrome.tabs.sendMessage(tabs[0].id, {status: status});
@@ -19,10 +19,10 @@ chrome.browserAction.onClicked.addListener(function(tabs) {
 // check status on tab update and notify content script
 chrome.tabs.onActivated.addListener(function() {
   if (status == 'true'){
-    chrome.browserAction.setIcon({path: "icons/icon-active.png"});
+    chrome.browserAction.setIcon({path: "icons/128-on.png"});
   } 
   else{
-    chrome.browserAction.setIcon({path: "icons/16x16.png"});
+    chrome.browserAction.setIcon({path: "icons/128-off.png"});
   }
   chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
     chrome.tabs.sendMessage(tabs[0].id, {status: status});
