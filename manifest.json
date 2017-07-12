@@ -1,7 +1,8 @@
 {
   "manifest_version": 2,
   "name": "resizemy.photos",
-  "description": "This extension allows to crop images from websites",
+  "short_name":"resizePhotos",
+  "description": "resizemy.photos allows you to crop and resize images from any website",
   "version": "1.1",
   "homepage_url": "http://resizemy.photos/",
   "author": "Guy Peri",
