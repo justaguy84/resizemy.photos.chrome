@@ -3,7 +3,7 @@
   "name": "resizemy.photos",
   "short_name":"resizePhotos",
   "description": "resizemy.photos allows you to crop and resize images from any website",
-  "version": "1",
+  "version": "1.10.0",
   "homepage_url": "http://resizemy.photos/",
   "author": "Guy Peri",
   "browser_action": {
