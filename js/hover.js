@@ -1,7 +1,9 @@
 // check extention status
 chrome.runtime.sendMessage({status: "getStatus"}, function(response) {
 	if (response.status == 'true'){
-		createLink();
+    if (!cropperExtension.object){
+		  createLink();
+    }
     	// check elements mouse is hover
 		document.addEventListener("mousemove", setLink, true);
 	}
@@ -11,12 +13,18 @@ chrome.runtime.sendMessage({status: "getStatus"}, function(response) {
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
     if (request.status == 'true'){
-    	createLink();
+      cropperExtension.object = document.getElementById('resizeMyPhoto');
+      if (!cropperExtension.object){
+        createLink();
+      }
     	// check elements mouse is hover
 		document.addEventListener("mousemove", setLink, true);
 	}
 	else{
-		document.body.removeChild(cropperExtension.link);
+    cropperExtension.object = document.getElementById('resizeMyPhoto');
+    if (cropperExtension.object){
+      document.body.removeChild(cropperExtension.link);
+    }
    		document.removeEventListener("mousemove", setLink, true);
    	}
 });
