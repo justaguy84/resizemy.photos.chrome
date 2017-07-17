@@ -230,6 +230,11 @@ ul.social li.active-preset-category{color:#56CCF2;}
   padding-right: 10px;
 }
 
+input[type="radio"]{
+  width: 24px;
+  height: 24px;  
+}
+
 input[type="text"]{
   border:none;
   padding: 8px;
@@ -239,7 +244,7 @@ input[type="text"]{
 }
 
 .sub-section{
-   line-height: 30px;
+   line-height: 38px;
    padding-bottom: 15px;
    padding-left: 20px;
 }
@@ -276,7 +281,6 @@ input[type=range] {
   margin: 7.7px 0;
   background:transparent;
 }
-
 input[type=range]:focus {
   outline: none;
 }
