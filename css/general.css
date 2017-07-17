@@ -178,7 +178,7 @@ p.keep-ratio{clear: both;}
 
 #preset, #crop, #resize{
   opacity: 0.4;
-  padding: 10px 20px;
+  padding: 10px 20px 30px 20px;
   float: left;
   border:1px solid #333333;
 }
@@ -251,6 +251,10 @@ input[type="text"]{
   margin: 0;
 }
 
+.sub-section label{
+  padding-left:10px;
+}
+
 input[type="range"]{
   left:10px;
   position: relative;
@@ -258,6 +262,11 @@ input[type="range"]{
 }
 
 p.height{padding-left: 30px;}
+
+#datePercentValue{
+  position: relative;
+  left:32px;
+}
 
 /*range*/
 
