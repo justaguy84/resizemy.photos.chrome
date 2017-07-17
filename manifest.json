@@ -41,6 +41,7 @@
     "contextMenus",
     "tabs",
     "http://*/*",
-    "https://*/*"
+    "https://*/*",
+    "file://*/*"
    ]
 }

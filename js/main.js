@@ -17,14 +17,21 @@ window.onload = function () {
   var Cropper = window.Cropper;
   var container = document.getElementById('img-container');
   var prepareImage = document.getElementById('prepareImage');
-  var custom = document.getElementById('custom');
   var preset = document.getElementById('preset');
+  var crop = document.getElementById('crop');
+  var resize = document.getElementById('resize');
   var presetGroups = document.getElementById('preset-groups');
   var download = document.getElementById('download');
-  var dataHeight = document.getElementById('dataHeight');
   var dataWidth = document.getElementById('dataWidth');
+  var dataHeight = document.getElementById('dataHeight');
+  var cropDataWidth = document.getElementById('cropDataWidth');
+  var cropDataHeight = document.getElementById('cropDataHeight');
   var fileName = document.getElementById('file-name');
   var fileSize = document.getElementById('file-size');
+  var cutomCrop = document.getElementById('cutomCrop');
+  var freeMode = document.getElementById('freeMode');
+  var resizePercent = document.getElementById('resizePercent');
+  var resizeCustom = document.getElementById('resizeCustom');
   var delay = (function(){
     var timer = 0;
     return function(callback, ms){
@@ -39,8 +46,12 @@ window.onload = function () {
     fileSize.innerHTML = 'Original size: ' + w + 'x' + h;
   }
   function  updateWHInputs(w,h){
-    dataHeight.value = Math.round(h);
     dataWidth.value = Math.round(w);
+    dataHeight.value = Math.round(h);
+  }
+  function updateCropWHInputs(w,h){
+    cropDataWidth.value = Math.round(w);
+    cropDataHeight.value = Math.round(h);
   }
   function removeClass(object,css){
     if (object){
@@ -51,6 +62,13 @@ window.onload = function () {
     if (object) {
       object.classList.add(css);
     }
+  }
+  function checkActive(css){
+    return (document.querySelector(css));
+  }
+  function prepareDownload(fileName,width,height){
+    prepareImage.setAttribute('data-option', '{ "width": '+Math.round(width)+', "height": '+Math.round(height)+' }');
+    prepareImage.setAttribute('data-file-name',fileName+'-'+Math.round(width)+'x'+Math.round(height));
   }
 
   //prepare cropper options
@@ -72,6 +90,13 @@ window.onload = function () {
     },
     crop: function (e) {
       var data = e.detail;
+      if (checkActive('.active-section').id == 'crop' && freeMode.checked==true){
+        updateCropWHInputs(Math.round(data.width),Math.round(data.height));
+        prepareDownload('freeMode',data.width,data.height);
+        delay(function(){
+          ga('send', 'event', 'image', 'image cropped','{ "width": '+Math.round(data.width)+', "height": '+Math.round(data.height)+' }');
+        },1000);
+      }
       console.log(e.type);
     },
     zoom: function (e) {
@@ -125,71 +150,23 @@ window.onload = function () {
   }
 
   // set active part
-  custom.onclick = function (event){
+  resize.onclick = function (event){
+    removeClass(checkActive('.active-section'),"active-section");
     addClass(this,"active-section");
-    removeClass(preset,"active-section");
   }
   preset.onclick = function (event){
+    removeClass(checkActive('.active-section'),"active-section");
     addClass(this,"active-section");
-    removeClass(custom,"active-section");
   }
-
-  
-  // set image/cropper size
-  // handle custom input:
-  custom.oninput = function (event){
-    var e = event || window.event;
-    var target = e.target || e.srcElement;
-    var imageData;
-    var croppertimer
-    var fileName = "custom-"
-    var keepRatio = document.getElementById("keep-ratio").checked;
-
-    if (!cropper || (target.type === undefined)) {
-      return;
-    }
-
-    if (target.tagName.toLowerCase() === 'label') {
-      target = target.querySelector('input');
-    }
-    if (keepRatio){
-      fileName = fileName + 'resize-';
-      if (target.id === 'dataWidth'){
-          dataHeight.value = Math.round(target.value * (image.naturalHeight/image.naturalWidth));
-        }
-      else if (target.id === 'dataHeight') {
-          dataWidth.value = Math.round(target.value * (image.naturalWidth/image.naturalHeight));
-      }
-      imageData = cropper['getImageData']();
-      options['aspectRatio'] = imageData.aspectRatio;
-      options['top'] = 0;
-      options['left'] = 0;
-      options['autoCropArea'] = 1;
-    }
-    else{
-      fileName = fileName + 'crop-';
-      options['aspectRatio'] = dataWidth.value/dataHeight.value;
-    }
-
-    // Restart
-    delay(function(){
-      addClass($('#custom-sizes input')[0],"active-item");
-      removeClass($('.box.btn.active')[0],"active-item");
-      prepareImage.setAttribute('data-option', '{ "width": '+dataWidth.value+', "height": '+dataHeight.value+' }');
-      prepareImage.setAttribute('data-file-name',fileName+dataWidth.value+'x'+dataHeight.value);
-      ga('send', 'event', 'image', 'image cropped','{ "width": '+dataWidth.value+', "height": '+dataHeight.value+' }');
-      target.disabled = true;
-      cropper.destroy();
-      cropper = new Cropper(image, options);
-      target.disabled = false;
-    },1000);
+  crop.onclick = function (event){
+    removeClass(checkActive('.active-section'),"active-section");
+    addClass(this,"active-section");
   }
 
   preset.onchange = function (event) {
     var e = event || window.event;
     var target = e.target || e.srcElement;
     var data;
-    var imageData;
 
     data = {
       option: target.getAttribute('data-option')
@@ -205,11 +182,12 @@ window.onload = function () {
     
     //set preset sizes
     data.optionJson = JSON.parse(data.option);
+    cutomCrop.checked = true;
+    updateCropWHInputs(data.optionJson.width,data.optionJson.height);
     removeClass($('.box.btn.active-item')[0],"active-item");
     addClass(target.parentNode,"active-item");
     removeClass($('#custom-sizes input')[0],"active-item");
-    prepareImage.setAttribute('data-option', data.option);
-    prepareImage.setAttribute('data-file-name',target.id+'-'+data.optionJson.width+'x'+data.optionJson.height);
+    prepareDownload(target.id,data.optionJson.width,data.optionJson.height);
     ga('send', 'event', 'image', 'image cropped',data.option);
     options.ready = function () {
       console.log('ready');
@@ -217,6 +195,92 @@ window.onload = function () {
     // Restart
     cropper.setAspectRatio(target.value);
   };
+
+  freeMode.onclick = function(event){
+    cropper.setAspectRatio("NaN");
+  };
+
+  cutomCrop.onclick = function(event){
+    updateCropWHInputs(Math.round(image.naturalWidth),Math.round(image.naturalHeight));
+    cropper.setAspectRatio(Math.round(image.naturalWidth)/Math.round(image.naturalHeight));
+    prepareDownload('custom-crop',Math.round(image.naturalWidth),Math.round(image.naturalHeight));
+    delay(function(){
+      ga('send', 'event', 'image', 'image cropped','{ "width": '+Math.round(image.naturalWidth)+', "height": '+Math.round(image.naturalHeight)+' }');
+    },1000);
+  };
+
+  crop.oninput = function(event){
+    var e = event || window.event;
+    var target = e.target || e.srcElement;
+    var fileName = "custom-crop";
+    cutomCrop.checked = true;
+
+    if (!cropper || (target.type === undefined)) {
+      return;
+    }
+
+    cropper.setAspectRatio(Math.round(cropDataWidth.value) / Math.round(cropDataHeight.value));
+    prepareDownload(fileName,Math.round(cropDataWidth.value),Math.round(cropDataHeight.value));
+    delay(function(){
+      ga('send', 'event', 'image', 'image cropped','{ "width": '+dataWidth.value+', "height": '+dataHeight.value+' }');
+    },1000);
+  }
+
+  // set image/cropper size
+  // handle custom input:
+  resize.oninput = function (event){
+    var e = event || window.event;
+    var target = e.target || e.srcElement;
+    var imageData;
+    var croppertimer;
+    var fileName;
+    
+
+    if (!cropper || (target.type === undefined)) {
+      return;
+    }
+
+    if (target.tagName.toLowerCase() === 'label') {
+      target = target.querySelector('input');
+    }
+    if (target.id === 'dataWidth'){
+        dataHeight.value = Math.round(target.value * (image.naturalHeight/image.naturalWidth));
+        resizeCustom.checked = true;
+        fileName = "resize-custom";
+        datePercent.value = (100/(image.naturalWidth / target.value))/100;
+        datePercentValue.innerHTML = (100/(image.naturalWidth / target.value)).toFixed(2);
+      }
+    else if (target.id === 'dataHeight') {
+        dataWidth.value = Math.round(target.value * (image.naturalWidth/image.naturalHeight));
+        resizeCustom.checked = true;
+        fileName = "resize-custom";
+        datePercent.value = (100/(image.naturalHeight / target.value))/100;
+        datePercentValue.innerHTML = (100/(image.naturalHeight / target.value)).toFixed(2);
+    }
+    else if (target.id === 'datePercent'){
+      updateWHInputs (Math.round(image.naturalWidth * target.value),Math.round(image.naturalHeight * target.value))
+      datePercentValue.innerHTML = Math.round(target.value *100);
+      resizePercent.checked = true;
+      fileName = "resize-percent";
+    }
+    imageData = cropper['getImageData']();
+    options['aspectRatio'] = imageData.aspectRatio;
+    options['top'] = 0;
+    options['left'] = 0;
+    options['autoCropArea'] = 1;
+
+    // Restart
+    delay(function(){
+      addClass($('#custom-sizes input')[0],"active-item");
+      removeClass($('.box.btn.active')[0],"active-item");
+      prepareDownload(fileName,dataWidth.value,dataHeight.value);
+      ga('send', 'event', 'image', 'image cropped','{ "width": '+dataWidth.value+', "height": '+dataHeight.value+' }');
+      target.disabled = true;
+      cropper.destroy();
+      cropper = new Cropper(image, options);
+      target.disabled = false;
+    },1000);
+  }
 
   // set download button
   download.onclick = function (event) {

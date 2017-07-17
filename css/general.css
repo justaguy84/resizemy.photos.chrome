@@ -177,7 +177,7 @@ p.height{margin-left: 20px;}
 
 p.keep-ratio{clear: both;}
 
-#custom, #preset{
+#preset, #crop, #resize{
   opacity: 0.4;
   padding: 10px 20px;
   float: left;
@@ -188,7 +188,7 @@ p.keep-ratio{clear: both;}
   padding-bottom: 20px;
 }
 
-#custom.active-section, #preset.active-section{
+#preset.active-section, #crop.active-section, #resize.active-section{
 opacity: 1;
 border:1px solid #777777;
 }
