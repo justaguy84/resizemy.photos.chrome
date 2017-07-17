@@ -53,6 +53,13 @@ window.onload = function () {
     cropDataWidth.value = Math.round(w);
     cropDataHeight.value = Math.round(h);
   }
+  function updateSlider(changed){
+    datePercent.value = (100/(changed))/100;
+    datePercentValue.innerHTML = (100/(changed)).toFixed(2);
+    if (datePercentValue.innerHTML > 100){
+      datePercentValue.style.color = "red";
+    }
+  }
   function removeClass(object,css){
     if (object){
       object.classList.remove(css);
@@ -247,15 +254,13 @@ window.onload = function () {
         dataHeight.value = Math.round(target.value * (image.naturalHeight/image.naturalWidth));
         resizeCustom.checked = true;
         fileName = "resize-custom";
-        datePercent.value = (100/(image.naturalWidth / target.value))/100;
-        datePercentValue.innerHTML = (100/(image.naturalWidth / target.value)).toFixed(2);
+        updateSlider(image.naturalWidth / target.value);
       }
     else if (target.id === 'dataHeight') {
         dataWidth.value = Math.round(target.value * (image.naturalWidth/image.naturalHeight));
         resizeCustom.checked = true;
         fileName = "resize-custom";
-        datePercent.value = (100/(image.naturalHeight / target.value))/100;
-        datePercentValue.innerHTML = (100/(image.naturalHeight / target.value)).toFixed(2);
+        updateSlider(image.naturalHeight / target.value);
     }
     else if (target.id === 'datePercent'){
       updateWHInputs (Math.round(image.naturalWidth * target.value),Math.round(image.naturalHeight * target.value))
