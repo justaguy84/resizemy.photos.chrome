@@ -108,7 +108,6 @@ a.link{
 
 .editor-section h2{
     float:left;
-    margin-bottom: 20px;
     padding-bottom: 0;
 }
 
@@ -223,3 +222,38 @@ ul.social li.active-preset-category{color:#56CCF2;}
 .box p span{
   font-size: 11px;
 }
+
+input[type="radio"]{
+  float: left !important;
+  top:6px;
+  position: relative;
+  padding-right: 10px;
+}
+
+input[type="text"]{
+  border:none;
+  padding: 8px;
+  border-radius: 2px; 
+  max-width: 40px;
+}
+
+.sub-section{
+   line-height: 30px;
+   padding-bottom: 15px;
+   padding-left: 20px;
+}
+
+.sub-section p{
+  position: relative;
+  left: 10px;
+  padding:0;
+  margin: 0;
+}
+
+input[type="range"]{
+  left:10px;
+  position: relative;
+  margin-right: 15px;
+}
+
+p.height{padding-left: 30px;}
