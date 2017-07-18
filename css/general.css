@@ -104,6 +104,7 @@ a.link{
   clear:both;
   width: 100%;
   float: left;
+  box-sizing: border-box;
 }
 
 .editor-section h2{
