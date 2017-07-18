@@ -23,9 +23,49 @@
 
         <div id="editor">
 
+            <div id="resize" class="editor-section">
+                <h2>Resize</h2>
+                <div class="clr"></div>
+                <div id="resize-percent" class="sub-section">
+                    <input type="radio" name="resize-type" value="percent" id="resizePercent">
+                    <input type="range" min="0.01" max="1.00" step="0.01" id="datePercent"> <span id="datePercentValue">50</span>%
+                </div>
+                <div id="resize-custom" class="sub-section">
+                    <input type="radio" name="resize-type" value="custom" id="resizeCustom">
+                    <p class="width"><span class="label">Width</span>
+                        <input type="text" name="custom-width" id="dataWidth"> <span class="px">PX</span> </p>
+
+                    <p class="height"><span class="label">Height</span>
+                        <input type="text" name="custom-height" id="dataHeight"> <span class="px">PX</span>
+                    </p>
+                </div>
+            </div>
+
+            <div id="crop" class="editor-section">
+                <h2>Crop</h2>
+                <div class="clr"></div>
+                <div id="custom-crop">
+                    <div class="freeMode sub-section">
+                        <input type="radio" name="crop-type" value="freeMode" id="freeMode"> <label for="freeMode">Freestyle crop - move the cropper and change proportions</label>
+                    </div>
+                    
+                    <div class="custom-mode sub-section">
+                        
+                        <input type="radio" name="crop-type" value="custom" checked="" id="cutomCrop">
+
+                        <p class="width"><span class="label">Width</span>
+                            <input type="text" name="crop-width" id="cropDataWidth" value="1920"> <span class="px">PX</span> </p>
+
+                        <p class="height"><span class="label">Height</span>
+                            <input type="text" name="crop-height" id="cropDataHeight" value="1080"> <span class="px">PX</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
             <div id="preset" data-toggle="buttons" class="editor-section active-section">
                 <div id="standard" class="editor-section">
-                    <h2>Social images sizes</h2>
+                    <h2>Social & web standard sizes</h2>
 
                     <ul class="social" id="preset-groups">
 
@@ -138,58 +178,15 @@
                         
                     </div>-->
                 </div>
-            </div>
-
-            <div id="crop" class="editor-section">
-                <h2>Crop</h2>
-                <div class="clr"></div>
-                <div id="custom-crop">
-                    <div class="freeMode sub-section">
-                        <input type="radio" name="crop-type" value="freeMode" id="freeMode"> <label for="freeMode">Freestyle crop - move the cropper and change proportions</label>
-                    </div>
-                    
-                    <div class="custom-mode sub-section">
-                        
-                        <input type="radio" name="crop-type" value="custom" checked="" id="cutomCrop">
-
-                        <p class="width"><span class="label">Width</span>
-                            <input type="text" name="crop-width" id="cropDataWidth" value="1920"> <span class="px">PX</span> </p>
-
-                        <p class="height"><span class="label">Height</span>
-                            <input type="text" name="crop-height" id="cropDataHeight" value="1080"> <span class="px">PX</span>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-
-
-            <div id="resize" class="editor-section">
-                <h2>Resize</h2>
-                <div class="clr"></div>
-                <div id="resize-percent" class="sub-section">
-                    <input type="radio" name="resize-type" value="percent" id="resizePercent">
-                    <input type="range" min="0.01" max="1.00" step="0.01" id="datePercent"> <span id="datePercentValue">50</span>%
-                </div>
-                <div id="resize-custom" class="sub-section">
-                    <input type="radio" name="resize-type" value="custom" id="resizeCustom">
-                    <p class="width"><span class="label">Width</span>
-                        <input type="text" name="custom-width" id="dataWidth"> <span class="px">PX</span> </p>
-
-                    <p class="height"><span class="label">Height</span>
-                        <input type="text" name="custom-height" id="dataHeight"> <span class="px">PX</span>
-                    </p>
-                </div>
-            </div>
-            
+            </div>            
 
             <div id="download">
                 <div id="image-format">
                     <label class="btn active-item" aria-pressed="true">
-                        <input type="radio" id="download-jpg" name="fileType" value="image/jpeg" checked="checked"> JPG
+                        <input type="radio" id="download-jpg" name="fileType" value="image/jpeg" checked="checked"> <span>JPG</span>
                     </label>
                     <label class="btn active-item" aria-pressed="true">
-                        <input type="radio" id="download-png" name="fileType" value="image/png"> PNG
+                        <input type="radio" id="download-png" name="fileType" value="image/png"> <span>PNG</span>
                     </label>
                 </div>
                 <button id="prepareImage" class="btn btn-primary prepare-button" data-method="getCroppedCanvas" data-option="{ &quot;width&quot;: 1920, &quot;height&quot;: 1080 }" data-file-name="desktop-1920x1080">Download Image</button>

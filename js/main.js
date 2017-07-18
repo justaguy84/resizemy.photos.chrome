@@ -59,6 +59,9 @@ window.onload = function () {
     if (datePercentValue.innerHTML > 100){
       datePercentValue.style.color = "red";
     }
+    else{
+      datePercentValue.style.color = null;
+    }
   }
   function removeClass(object,css){
     if (object){
@@ -170,6 +173,83 @@ window.onload = function () {
     addClass(this,"active-section");
   }
 
+  // set image/cropper size
+  // handle custom input:
+  resize.oninput = function (event){
+    var e = event || window.event;
+    var target = e.target || e.srcElement;
+    var imageData;
+    var canvasData;
+    var croppertimer;
+    var fileName;
+    
+
+    if (!cropper || (target.type === undefined)) {
+      return;
+    }
+
+    if (target.tagName.toLowerCase() === 'label') {
+      target = target.querySelector('input');
+    }
+    if (target.id === 'dataWidth'){
+        dataHeight.value = Math.round(target.value * (image.naturalHeight/image.naturalWidth));
+        resizeCustom.checked = true;
+        fileName = "resize-custom";
+        updateSlider(image.naturalWidth / target.value);
+      }
+    else if (target.id === 'dataHeight') {
+        dataWidth.value = Math.round(target.value * (image.naturalWidth/image.naturalHeight));
+        resizeCustom.checked = true;
+        fileName = "resize-custom";
+        updateSlider(image.naturalHeight / target.value);
+    }
+    else if (target.id === 'datePercent'){
+      updateWHInputs (Math.round(image.naturalWidth * target.value),Math.round(image.naturalHeight * target.value))
+      datePercentValue.innerHTML = Math.round(target.value *100);
+      datePercentValue.style.color = null;
+      resizePercent.checked = true;
+      fileName = "resize-percent";
+    }
+    imageData = cropper['getImageData']();
+    canvasData = cropper['getCanvasData']();
+    cropper.setAspectRatio(imageData.aspectRatio);
+    cropper.setCropBoxData(canvasData);
+    addClass($('#custom-sizes input')[0],"active-item");
+    removeClass($('.box.btn.active')[0],"active-item");
+    prepareDownload(fileName,dataWidth.value,dataHeight.value);
+    ga('send', 'event', 'image', 'image cropped','{ "width": '+dataWidth.value+', "height": '+dataHeight.value+' }');
+  }
+
+  freeMode.onclick = function(event){
+    cropper.setAspectRatio("NaN");
+  };
+
+  cutomCrop.onclick = function(event){
+    updateCropWHInputs(Math.round(image.naturalWidth),Math.round(image.naturalHeight));
+    cropper.setAspectRatio(Math.round(image.naturalWidth)/Math.round(image.naturalHeight));
+    prepareDownload('custom-crop',Math.round(image.naturalWidth),Math.round(image.naturalHeight));
+    delay(function(){
+      ga('send', 'event', 'image', 'image cropped','{ "width": '+Math.round(image.naturalWidth)+', "height": '+Math.round(image.naturalHeight)+' }');
+    },1000);
+  };
+
+  crop.oninput = function(event){
+    var e = event || window.event;
+    var target = e.target || e.srcElement;
+    var fileName = "custom-crop";
+    cutomCrop.checked = true;
+
+    if (!cropper || (target.type === undefined)) {
+      return;
+    }
+
+    cropper.setAspectRatio(Math.round(cropDataWidth.value) / Math.round(cropDataHeight.value));
+    prepareDownload(fileName,Math.round(cropDataWidth.value),Math.round(cropDataHeight.value));
+    delay(function(){
+      ga('send', 'event', 'image', 'image cropped','{ "width": '+dataWidth.value+', "height": '+dataHeight.value+' }');
+    },1000);
+  }
+
   preset.onchange = function (event) {
     var e = event || window.event;
     var target = e.target || e.srcElement;
@@ -202,90 +282,6 @@ window.onload = function () {
     // Restart
     cropper.setAspectRatio(target.value);
   };
-
-  freeMode.onclick = function(event){
-    cropper.setAspectRatio("NaN");
-  };
-
-  cutomCrop.onclick = function(event){
-    updateCropWHInputs(Math.round(image.naturalWidth),Math.round(image.naturalHeight));
-    cropper.setAspectRatio(Math.round(image.naturalWidth)/Math.round(image.naturalHeight));
-    prepareDownload('custom-crop',Math.round(image.naturalWidth),Math.round(image.naturalHeight));
-    delay(function(){
-      ga('send', 'event', 'image', 'image cropped','{ "width": '+Math.round(image.naturalWidth)+', "height": '+Math.round(image.naturalHeight)+' }');
-    },1000);
-  };
-
-  crop.oninput = function(event){
-    var e = event || window.event;
-    var target = e.target || e.srcElement;
-    var fileName = "custom-crop";
-    cutomCrop.checked = true;
-
-    if (!cropper || (target.type === undefined)) {
-      return;
-    }
-
-    cropper.setAspectRatio(Math.round(cropDataWidth.value) / Math.round(cropDataHeight.value));
-    prepareDownload(fileName,Math.round(cropDataWidth.value),Math.round(cropDataHeight.value));
-    delay(function(){
-      ga('send', 'event', 'image', 'image cropped','{ "width": '+dataWidth.value+', "height": '+dataHeight.value+' }');
-    },1000);
-  }
-
-  // set image/cropper size
-  // handle custom input:
-  resize.oninput = function (event){
-    var e = event || window.event;
-    var target = e.target || e.srcElement;
-    var imageData;
-    var croppertimer;
-    var fileName;
-    
-
-    if (!cropper || (target.type === undefined)) {
-      return;
-    }
-
-    if (target.tagName.toLowerCase() === 'label') {
-      target = target.querySelector('input');
-    }
-    if (target.id === 'dataWidth'){
-        dataHeight.value = Math.round(target.value * (image.naturalHeight/image.naturalWidth));
-        resizeCustom.checked = true;
-        fileName = "resize-custom";
-        updateSlider(image.naturalWidth / target.value);
-      }
-    else if (target.id === 'dataHeight') {
-        dataWidth.value = Math.round(target.value * (image.naturalWidth/image.naturalHeight));
-        resizeCustom.checked = true;
-        fileName = "resize-custom";
-        updateSlider(image.naturalHeight / target.value);
-    }
-    else if (target.id === 'datePercent'){
-      updateWHInputs (Math.round(image.naturalWidth * target.value),Math.round(image.naturalHeight * target.value))
-      datePercentValue.innerHTML = Math.round(target.value *100);
-      resizePercent.checked = true;
-      fileName = "resize-percent";
-    }
-    imageData = cropper['getImageData']();
-    options['aspectRatio'] = imageData.aspectRatio;
-    options['top'] = 0;
-    options['left'] = 0;
-    options['autoCropArea'] = 1;
-
-    // Restart
-    delay(function(){
-      addClass($('#custom-sizes input')[0],"active-item");
-      removeClass($('.box.btn.active')[0],"active-item");
-      prepareDownload(fileName,dataWidth.value,dataHeight.value);
-      ga('send', 'event', 'image', 'image cropped','{ "width": '+dataWidth.value+', "height": '+dataHeight.value+' }');
-      target.disabled = true;
-      cropper.destroy();
-      cropper = new Cropper(image, options);
-      target.disabled = false;
-    },1000);
-  }
 
   // set download button
   download.onclick = function (event) {
