@@ -2,8 +2,8 @@
   "manifest_version": 2,
   "name": "resizemy.photos",
   "short_name":"resizePhotos",
-  "description": "resizemy.photos allows you to crop and resize images from any website",
-  "version": "1.10.1",
+  "description": "Resize or crop any photo or image from any website",
+  "version": "1.50.1",
   "homepage_url": "http://resizemy.photos/",
   "author": "Guy Peri",
   "browser_action": {
@@ -41,6 +41,7 @@
     "contextMenus",
     "tabs",
     "http://*/*",
-    "https://*/*"
+    "https://*/*",
+    "file://*/*"
    ]
 }
