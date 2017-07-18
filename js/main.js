@@ -217,7 +217,10 @@ window.onload = function () {
     addClass($('#custom-sizes input')[0],"active-item");
     removeClass($('.box.btn.active')[0],"active-item");
     prepareDownload(fileName,dataWidth.value,dataHeight.value);
-    ga('send', 'event', 'image', 'image cropped','{ "width": '+dataWidth.value+', "height": '+dataHeight.value+' }');
+    delay(function(){
+      ga('send', 'event', 'image', 'image cropped','{ "width": '+dataWidth.value+', "height": '+dataHeight.value+' }');
+    },1000);
+    
   }
 
   freeMode.onclick = function(event){
@@ -275,7 +278,10 @@ window.onload = function () {
     addClass(target.parentNode,"active-item");
     removeClass($('#custom-sizes input')[0],"active-item");
     prepareDownload(target.id,data.optionJson.width,data.optionJson.height);
-    ga('send', 'event', 'image', 'image cropped',data.option);
+    delay(function(){
+      ga('send', 'event', 'image', 'image cropped',data.option);
+    },1000);
+    
     options.ready = function () {
       console.log('ready');
     };
